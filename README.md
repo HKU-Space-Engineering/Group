@@ -12,9 +12,9 @@ After you amended the work or program, you should post it on your own branch.
 修改作品或程序後，您應該將其發佈到您自己的分支上。
 
 
-### Any work after you changed by your own, Remember don't upload here unless another one know and agree ! ###
+### Any work after you changed by your own, Remember don't upload here unless another one know! ###
 
-###任何你自己修改後的作品，請記住先不要上傳到這裡，除非其他人知道並同意！###
+###任何你自己修改後的作品，請記住先不要上傳到這裡，除非其他人知道！###
 
 
 P.S. 每一次修改都需要在下方的更新表中說明。
