@@ -1,5 +1,12 @@
 # Here is the main branch
 
+#Quick Link
+
+    - Logbook: https://docs.google.com/document/d/1IS0sm_CES9lcW-R-pZGKQvBT4t3uZ5PP/edit
+     
+
+    
+----------------------------------------------------------------------------------------------
 
 Work:
 
@@ -7,14 +14,15 @@ Store the main group project code,moduel and demanded environment
 
 這裏存放主要項目代碼和需要的環境/模組。
 
+
 After you amended the work or program, you should post it on your own branch.
 
 修改作品或程序後，您應該將其發佈到您自己的分支上。
 
 
-### Any work after you changed by your own, Remember don't upload here unless another one know! ###
+## Any work after you changed by your own, Remember don't upload here unless another one know! ##
 
-###任何你自己修改後的作品，請記住先不要上傳到這裡，除非其他人知道！###
+##任何你自己修改後的作品，請記住先不要上傳到這裡，除非其他人知道！##
 
 
 P.S. 每一次修改都需要在下方的更新表中說明。
@@ -41,8 +49,11 @@ Work:
 
 (Name) 添加了 XXXX module， module 來自 www.123.com 
 
-
 */
 
+
+1.
+Date: 
+Work:
 
  
