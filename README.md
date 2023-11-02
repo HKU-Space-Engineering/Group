@@ -59,7 +59,12 @@ Work:
  Date:2023/11/2 13:40
 
  Work:
- Jian Chun Hin,20207461,Ben 更新了 Apache PDFBox 3.0.0 來自  
- - https://pdfbox.apache.org/
+ Jian Chun Hin,20207461,Ben 更新了 Apache PDFBox 3.0.0 
+
+官方網站：https://pdfbox.apache.org/
+
+官方文件: https://pdfbox.apache.org/3.0/migration.html
+
+民間介紹：https://iowiki.com/pdfbox/pdfbox_quick_guide.html
 
  
