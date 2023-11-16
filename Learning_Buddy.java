@@ -2,7 +2,21 @@
  * @author Jian Chun Hin 
  * 
  */
-public class Learning Buddy {
+
+/*UML Digram
+ 
+Learning Buddy
+---------------------
+String uName;
+int uID;
+int uBirth;
+String uSchool;
+-----------------------
++ main(args [] String)
+*/
+
+
+public class Learning_Buddy {
 //field
 String uName;
 int uID;
@@ -14,13 +28,8 @@ String uSchool;
         try{
             //Check does the user has created their account yet.
             //if not, then run "Login.CreateAccount()" in catch(),else keep running
-        }catch();
-
-
-    }
-
-    public void Exception1(){
-        System.out.printf("Please Input your data!\n");//這裏要變成interface , 原因是 print與GUI 不相容。
-        Login.CreateAccount()
+        }catch(Exception e){
+            //something we need to write
+        }
     }
 }
