@@ -22,18 +22,8 @@ After you amended the work or program, you should post it on your own branch.
 
 修改作品或程序後，您應該將其發佈到您自己的分支上。
 
-
-## Any work after you changed by your own, Remember don't upload here unless another one know! ##
-
-##任何你自己修改後的作品，請記住先不要上傳到這裡，除非其他人知道！##
-
-
 P.S. 每一次修改都需要在下方的更新表中說明。
 
-如果不清楚branch， 可以選擇訪問  JCH_簡_branch ，閲讀相關内容，並創建屬於你個人的branch.
-
-
-個人的branch可以記錄你的工作，可以用于計算自己的貢獻。所以請務必創建個人的分支。
 ---------------------------------------------------------------
 
 
@@ -54,6 +44,18 @@ Work:
 
 */
 
+ 3.
+ Date:2023/11/16 22:59
+
+Work:
+ Jian Chun Hin,20207461,Ben 更新了 Learning_Buddy.java and Login.java ,同時寫了 UML digram.
+
+ 2.
+ Date:2023/11/16 15:25
+
+ Work:
+ Jian Chun Hin,20207461,Ben 添加了 Learning_Buddy.java and Login.java
+
 
 1.
  Date:2023/11/2 13:40
@@ -64,7 +66,5 @@ Work:
 官方網站：https://pdfbox.apache.org/
 
 官方文件: https://pdfbox.apache.org/3.0/migration.html
-
-民間介紹：https://iowiki.com/pdfbox/pdfbox_quick_guide.html
 
  
