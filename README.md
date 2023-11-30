@@ -44,27 +44,30 @@ Work:
 
 */
 
- 3.
- Date:2023/11/16 22:59
-
-Work:
- Jian Chun Hin,20207461,Ben 更新了 Learning_Buddy.java and Login.java ,同時寫了 UML digram.
-
- 2.
- Date:2023/11/16 15:25
-
- Work:
- Jian Chun Hin,20207461,Ben 添加了 Learning_Buddy.java and Login.java
-
-
 1.
  Date:2023/11/2 13:40
 
  Work:
- Jian Chun Hin,20207461,Ben 更新了 Apache PDFBox 3.0.0 
+ Jian Chun Hin,20207461,Ben add/update/upload Apache PDFBox 3.0.0 
 
 官方網站：https://pdfbox.apache.org/
 
 官方文件: https://pdfbox.apache.org/3.0/migration.html
 
- 
+ 2.
+ Date:2023/11/16 15:25
+
+ Work:
+ Jian Chun Hin,20207461,Ben add Learning_Buddy.java and Login.java
+
+ 3.
+ Date:2023/11/16 22:59
+
+Work:
+ Jian Chun Hin,20207461,Ben update Learning_Buddy.java and Login.java ,and write the UML digram.
+
+ 4.
+ Date: 2023/11/30 10:15
+
+Work:
+Jian Chun Hi,20207461,Ben upload InterfaceS.java
