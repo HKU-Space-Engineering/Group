@@ -13,6 +13,7 @@ int uBirth;
 String uSchool;
 -----------------------
 + main(args [] String)
++ MainInterface()
 */
 
 
@@ -23,13 +24,14 @@ int uID;
 int uBirth;
 String uSchool;
 
-    public void main(String[] args){
+    public static void main(String[] args){
         System.out.printf("Welcome to the Learning Buddy");
         try{
-            //Check does the user has created their account yet.
-            //if not, then run "Login.CreateAccount()" in catch(),else keep running
-        }catch(Exception e){
-            //something we need to write
-        }
+            Login.Interface();
+        }catch(Exception e){}
+    }   
+
+    public static void MainInterface(){
+        System.out.println("Find one people to finish it.");
     }
 }
