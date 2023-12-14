@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 /**@author Jian Chun Hin  */
 
 /*Don't use Chinese to write, It will cause an Error when you compile the program */
@@ -9,7 +10,7 @@ public class InterfaceS {
         JFrame frame = new JFrame("Example");
 
         // A setting of size
-        frame.setSize(1000,1000);
+        frame.setSize(500,500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);/*Don't ask me that what is it. I also don't know. */
         
         /*Create a Panel*/
@@ -46,7 +47,14 @@ public class InterfaceS {
 
         /*Create a Login Button */
         JButton loginButton = new JButton("Login");
-        loginButton.setBounds(10,80,80,25);
+        loginButton.setBounds(10,80,80,25); 
+        loginButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event){
+                String AccountID = userText.getText();
+                System.out.println(AccountID);
+            JOptionPane.showMessageDialog(null,AccountID);
+            }
+        });
         panel.add(loginButton);
 
         JTextArea textArea = new JTextArea();
