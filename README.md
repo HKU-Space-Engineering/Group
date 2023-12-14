@@ -11,17 +11,6 @@
     
 ----------------------------------------------------------------------------------------------
 
-Work:
-
-Store the main group project code,moduel and demanded environment
-
-這裏存放主要項目代碼和需要的環境/模組。
-
-
-After you amended the work or program, you should post it on your own branch.
-
-修改作品或程序後，您應該將其發佈到您自己的分支上。
-
 P.S. 每一次修改都需要在下方的更新表中說明。
 
 ---------------------------------------------------------------
@@ -54,20 +43,20 @@ Work:
 
 官方文件: https://pdfbox.apache.org/3.0/migration.html
 
- 2.
+2.
  Date:2023/11/16 15:25
 
  Work:
  Jian Chun Hin,20207461,Ben add Learning_Buddy.java and Login.java
 
- 3.
+3.
  Date:2023/11/16 22:59
 
-Work:
+ Work:
  Jian Chun Hin,20207461,Ben update Learning_Buddy.java and Login.java ,and write the UML digram.
 
- 4.
+4.
  Date: 2023/11/30 10:15
 
-Work:
-Jian Chun Hi,20207461,Ben upload InterfaceS.java
+ Work:
+ Jian Chun Hin,20207461,Ben upload InterfaceS.java,Learning_Buddy.java and Login.java,Learning_Buddy.bat and Login.bat, Account.txt
