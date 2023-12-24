@@ -60,3 +60,9 @@ Work:
 
  Work:
  Jian Chun Hin,20207461,Ben upload InterfaceS.java,Learning_Buddy.java and Login.java,Learning_Buddy.bat and Login.bat, Account.txt
+
+5.
+ Date: 2023/12/24 18:30
+
+ Work:
+ Chau Siu Hong,20186650,Joe upload Reminder.java
