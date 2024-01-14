@@ -66,3 +66,9 @@ Work:
 
  Work:
  Chau Siu Hong,20186650,Joe upload Reminder.java
+
+6.
+  Date: 2024/1/14 12:24
+
+  Work:
+  Jian Chun Hin,20207461,Ben upload Wiki_2.py , Wiki_2.exe and Data.txt
