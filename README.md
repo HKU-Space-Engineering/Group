@@ -72,3 +72,9 @@ Work:
 
   Work:
   Jian Chun Hin,20207461,Ben upload Wiki_2.py , Wiki_2.exe and Data.txt
+
+7.
+  Date:2024/1/15 20:58
+
+  Work:
+  Jian Chun Hin,20207461,Ben, upload Storage.java and Storage.class, update Learning_Buddy.java, Learning_Buddy.class, Login.java and Login.class.
