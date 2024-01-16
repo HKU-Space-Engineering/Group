@@ -18,13 +18,13 @@ public class Reminder {
             /*Create a Panel*/
             JPanel panel = new JPanel();//It create a Panel
             frame.add(panel); // Add the panel
-            trainingP(panel); // Disgin the Panel + use the method
+            ReminderP(panel); // Disgin the Panel + use the method
             frame.setVisible(true);
 
         }catch(Exception e){}
     }
 
-    public static void trainingP(JPanel panel){
+    public static void ReminderP(JPanel panel){
         JLabel ReminderLabel = new JLabel("Reminder");// Seting the position of Panel
         ReminderLabel.setBounds(10,20,80,40);  // setBounds(x,y,width,height);
         panel.add(ReminderLabel); //add the label into the Panel
