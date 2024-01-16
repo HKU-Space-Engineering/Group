@@ -107,7 +107,7 @@ public class Login {
         panel.add(JPassword);
 
         /*Create A TextBox for People to input */
-        JPasswordField UserPassword = new JPasswordField(20);
+        JTextField UserPassword = new JTextField(20);
         UserPassword.setBounds(130,200,100,25);
         panel.add(UserPassword);
 
@@ -116,7 +116,7 @@ public class Login {
         Confirm.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event){
                 Login newUser = new Login(UserName.getText(), UserID.getText(), UserSchool.getText(), UserEmail.getText());
-                String Text = newUser.getName() + " " + UserPassword.getPassword().toString();
+                String Text = newUser.getName()+UserPassword.getText();
                 Storage.TextFileInput("Account.txt", Text);
             } 
         });
@@ -146,18 +146,26 @@ public class Login {
 
     // A method was used to check the account existance
     public static Boolean CheckAccount(String AccountID,String password){
+        // This function hava a seriou bug: 
         //1. Read the Account.txt file
-        //2.check the account and password
+        //2.check the account and password <- bug is here
+        // Jian Chun Hin use a print function to print the file password and the user input password.
+        // Even though they are same, they are still no equal to each other.
+        // For example, file password is "1b", user input "1b" 
         Boolean exist = false;
         String Strline;
         try{
             BufferedReader bufferReader = new BufferedReader(new FileReader("Account.txt"));
             while((Strline = bufferReader.readLine()) != null){
             //The format of the file: 
-            //     AccountID + " " + password
-            //E.g. 20207461 1234567890 
-                if(Strline == AccountID+" "+password){
+            //E.g. 
+            //20207461
+            //1234567890 
+            String Password = AccountID+password;
+            System.out.printf("Strline is %s.\nPassword is %s.",Strline,Password);
+                if(Strline == Password){//Occur a bug######
                     exist = true;
+                    break;
                 }
             }
             bufferReader.close();
@@ -207,7 +215,7 @@ public class Login {
         panel.add(passwordLabel);
 
         /*Create a PassWord TextBox(Password)*/
-        JPasswordField passwordText = new JPasswordField(20);
+        JTextField passwordText = new JTextField(20);
         passwordText.setBounds(100,50,165,25);
         panel.add(passwordText);
 
@@ -218,7 +226,7 @@ public class Login {
             public void actionPerformed(ActionEvent event){
                 //Already solve the GUI event problem
                 String AccountID = userAccountID.getText(); // Get the AccountID from the box.
-                String Password = passwordText.getPassword().toString(); // Get the Password from the password boc.
+                String Password = passwordText.getText(); // Get the Password from the password boc.
                 if(CheckAccount(AccountID,Password)){//Check the Existance of account
                     //if yes, login
                     JOptionPane.showMessageDialog(null,"Login Successfully");
@@ -227,6 +235,7 @@ public class Login {
                 }else{
                     //
                     JOptionPane.showMessageDialog(null,"The AccountID or Password don't Exist!");//I hope it can return a Joption but it doesn't work!
+                    Learning_Buddy.MainInterface();
                 }
                 
             }
