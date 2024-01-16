@@ -68,12 +68,18 @@ Work:
  Chau Siu Hong,20186650,Joe upload Reminder.java
 
 6.
+ Date: 2023/12/24 18:30
+
+ Work:
+ Lam Tsun Ting,20219894,Bryan upload Achievement.java
+
+7.
   Date: 2024/1/14 12:24
 
   Work:
   Jian Chun Hin,20207461,Ben upload Wiki_2.py , Wiki_2.exe and Data.txt
 
-7.
+8.
   Date:2024/1/15 20:58
 
   Work:
