@@ -91,3 +91,10 @@ Work:
 
   Work:
   Jian Chun Hin,20207461,Ben, upload Training.java,Training.bat, upload Learning_Buddy.java, Learning_Buddy.class, Login.java and Login.class.
+
+10.
+  Date: 2024/1/16 21:58
+
+  Work:
+  Chan Tze Hei Dawn, 20219923, uploaded DocManager.java
+
