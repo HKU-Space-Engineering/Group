@@ -182,7 +182,7 @@ public class Login {
             JFrame frame = new JFrame();
             frame.setSize(500,500);
             frame.setLocation(400,400);
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);/*Don't ask me that what is it. I also don't know. */
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
             /*Create a Panel*/
             JPanel panel = new JPanel();//It create a Panel
