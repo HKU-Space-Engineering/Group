@@ -98,3 +98,9 @@ Work:
   Work:
   Chan Tze Hei Dawn, 20219923, uploaded DocManager.java
 
+11.
+  Date: 2024/1/17 23:11
+
+  Work:
+  Jian Chun Hin Ben, 20207461, upload Training[Sample].java, upload Learning_Buddy.java, Login.java ,Training.java
+
