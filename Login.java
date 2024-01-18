@@ -162,8 +162,7 @@ public class Login {
             //20207461
             //1234567890 
             String Password = AccountID+password;
-            System.out.printf("Strline is %s.\nPassword is %s.",Strline,Password);
-                if(Strline == Password){//Occur a bug######
+                if(Strline.equals(Password)){//Occur a bug######
                     exist = true;
                     break;
                 }

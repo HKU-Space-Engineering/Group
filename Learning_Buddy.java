@@ -7,8 +7,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JRadioButtonMenuItem;
-import java.awt.Color;
-import java.awt.Container;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.applet.*;
@@ -56,11 +55,26 @@ public class Learning_Buddy{
             Menu menu = new Menu("Menu");  
             Menu submenu = new Menu("Sub Menu");  
 
-            MenuItem i1 = new MenuItem("Reminder");  
+            MenuItem i1 = new MenuItem("Reminder");
+            i1.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent event) {
+                    Reminder.Reminder();//Call Achievement interface 
+                }
+            });
 
             MenuItem i2 = new MenuItem("Achievement");  
+            i2.addActionListener(new ActionListener() {     // Call Training function
+                public void actionPerformed(ActionEvent event){
+                    Achievement.Achievement();//Call Achievement interface
+                } 
+            });
 
             MenuItem i3 = new MenuItem("Document Management"); 
+            i3.addActionListener(new ActionListener() {     // Call Training function
+                public void actionPerformed(ActionEvent event){
+                    //DocManager.interface();   This program didn't finish.
+                } 
+            });
 
             MenuItem i4 = new MenuItem("Training"); 
 
