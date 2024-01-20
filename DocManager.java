@@ -18,12 +18,12 @@ public class DocManager {
         }catch(Exception e){}
     }
 
-    public static void DocManagerP(JPanel panel){
-        panel.setLayout(null);
+        public static void DocManagerP(JPanel panel){
+            panel.setLayout(null);
 
-        JLabel ReminderLabel = new JLabel("DocManager");// Setting the position of Panel
-        ReminderLabel.setBounds(10,20,80,40);  // setBounds(x,y,width,height);
-        panel.add(DocManagerLabel); //add the label into the Panel
+            JLabel ReminderLabel = new JLabel("DocManager");// Setting the position of Panel
+            ReminderLabel.setBounds(10,20,80,40);  // setBounds(x,y,width,height);
+            panel.add(DocManagerLabel); //add the label into the Panel
 
         
     }
