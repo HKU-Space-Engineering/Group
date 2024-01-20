@@ -38,6 +38,8 @@ public class Training {
 
 
     public static void trainingP2(JPanel panel){
+        panel.setLayout(null);// A setting of layout: Very Important, if your program without this code, your panel element(such as JLabel/textField) will be mix.
+        
         JLabel TrainingLabel = new JLabel("Training2");// Seting the position of Panel
         TrainingLabel.setBounds(10,20,80,40);  // setBounds(x,y,width,height);
         panel.add(TrainingLabel); //add the label into the Panel
