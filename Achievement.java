@@ -25,6 +25,9 @@ public class Achievement {
     }
 
     public static void AchievementP(JPanel panel){
+
+        panel.setLayout(null);
+        
         JLabel AchievementLabel = new JLabel("Achievement");// Seting the position of Panel
         AchievementLabel.setBounds(10,20,80,40);  // setBounds(x,y,width,height);
         panel.add(AchievementLabel); //add the label into the Panel
