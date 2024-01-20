@@ -13,21 +13,35 @@ public class Reminder {
             JFrame frame = new JFrame();
             frame.setSize(500,500);
             frame.setLocation(400,400);
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// It is necessary
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);// It is necessary
         
             /*Create a Panel*/
             JPanel panel = new JPanel();//It create a Panel
             frame.add(panel); // Add the panel
-            ReminderP(panel); // Disgin the Panel + use the method
+            ReminderP(panel); // Design the Panel + use the method
             frame.setVisible(true);
-
         }catch(Exception e){}
     }
 
     public static void ReminderP(JPanel panel){
-        JLabel ReminderLabel = new JLabel("Reminder");// Seting the position of Panel
+        panel.setLayout(null);
+
+        JLabel ReminderLabel = new JLabel("Reminder");// Setting the position of Panel
         ReminderLabel.setBounds(10,20,80,40);  // setBounds(x,y,width,height);
         panel.add(ReminderLabel); //add the label into the Panel
+
+        JLabel bookmarkLabel = new JLabel("Please input your study target");
+        bookmarkLabel.setBounds(10,40,200,25);
+        panel.add(bookmarkLabel);
+
+        JLabel contentLabel = new JLabel("Content:");
+        contentLabel.setBounds(10,60,100,25);
+        panel.add(contentLabel);
+
+        //textbox
+        JTextField content = new JTextField(20);
+        content.setBounds(80,60,100,25);
+        panel.add(content);
     }
 
     public static void CreateBookmark() {
