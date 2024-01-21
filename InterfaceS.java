@@ -11,7 +11,7 @@ public class InterfaceS {
 
         // A setting of size
         frame.setSize(500,500);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);/*Don't ask me that what is it. I also don't know. */
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);/*Please follow the Training.java JFrame.EXIT_ON_CLOSE is not appropriated for our demand*/ 
         
         /*Create a Panel*/
         JPanel panel = new JPanel();//It create a Panel
@@ -48,7 +48,7 @@ public class InterfaceS {
         /*Create a Login Button */
         JButton loginButton = new JButton("Login");
         loginButton.setBounds(10,80,80,25); 
-        loginButton.addActionListener(new ActionListener() {
+        loginButton.addActionListener(new ActionListener() { // If you want to use an event, you can follow this code to create an action listener
             public void actionPerformed(ActionEvent event){
                 String AccountID = userText.getText();
                 System.out.println(AccountID);
@@ -57,8 +57,8 @@ public class InterfaceS {
         });
         panel.add(loginButton);
 
-        JTextArea textArea = new JTextArea();
-        textArea.setText("Here is the text area\n");
+        JTextArea textArea = new JTextArea(); 
+        textArea.setText("Here is the text area\n");   // You also can write like this: JTextArea textArea = new JTextArea(Here is the text area\n");
         textArea.append("Hellow");
         textArea.setBounds(10,120,200,50);
         panel.add(textArea);
