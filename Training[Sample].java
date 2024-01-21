@@ -23,9 +23,9 @@ public class Training {
             /*Create a Panel*/
             JPanel panel = new JPanel();//It create a Panel
             frame.add(panel); // Add the panel
-            trainingP(panel); // Disgin the Panel + use the method
+            trainingP(panel); // Disgin the Panel + use the method // Please remember amend the function name when you copy this code.
             frame.setVisible(true);
-            trainingP2(panel); // Re - product a new panel which replaces the older one
+            trainingP2(panel); // Re-product a new panel which replaces the older one  // Don't copy this code 
 
         }catch(Exception e){}
     }
@@ -37,7 +37,7 @@ public class Training {
     }
 
 
-    public static void trainingP2(JPanel panel){
+    public static void trainingP2(JPanel panel){// this function aims to provide a setting of second panel
         panel.setLayout(null);// A setting of layout: Very Important, if your program without this code, your panel element(such as JLabel/textField) will be mix.
         
         JLabel TrainingLabel = new JLabel("Training2");// Seting the position of Panel
