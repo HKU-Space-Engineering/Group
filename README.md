@@ -1,3 +1,4 @@
+
 # Here is the main branch
 
 #Quick Link
@@ -109,4 +110,10 @@ Work:
 
   Work:
   Jian Chun Hin Ben, 20207461, update Learning_Buddy.java and Login.java
+
+13.
+  Date: 2024/1/21 22:39
+
+  Work:
+  Jian Chun Hin Ben, 20207461,update Learning Buddy.java,Learning Buddy.class, Training.java, Training.class, Wiki_2.py and Wiki.exe
 
