@@ -15,8 +15,10 @@ with open("Rearchfile.txt","r") as rr:
 wiki_wiki = wikipediaapi.Wikipedia("WikiSearcher (1704935142jian@gmail.com)",'en',extract_format = wikipediaapi.ExtractFormat.WIKI)
 #start
 p_wiki = wiki_wiki.page(Rearch)
-dStr = p_wiki.text
-print(dStr)
+if (p_wiki.exists()):
+    dStr = p_wiki.text
+else:
+    dStr = "False"
 
 
 with open("Data.txt","w+",encoding="utf-8") as download:

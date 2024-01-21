@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 import java.util.*;
+import java.io.*;
 
 //Field
 
@@ -62,11 +63,21 @@ public class Training {
         Area.setBounds(10,150,165,40);// setBounds(x,y,width,height);
         panel.add(Area);
 
-        JButton Search = new JButton("Search");
+        JButton Search = new JButton("Search");//Create a Button
         Search.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event){
                 String TextArea = Area.getText();
                 Storage.TextFileInput("Rearchfile",TextArea);
+                try{
+                    Process proc = Runtime.getRuntime().exec("Wiki_2.exe"); // Runing a exe program
+                    int number = proc.waitFor();
+                    if (number == 0){
+                        System.out.println(true);
+                    }
+                }catch(IOException |InterruptedException e){
+                    e.printStackTrace();
+                }
+                //Call the question panel
             }
         });   
         Search.setBounds(10,220,80,40);
@@ -75,21 +86,6 @@ public class Training {
     
     //This function for create the question according to the user's input: Called from Button Search
     public static void QuestionPart(JPanel panel,String Keywords){
-        JLabel TrainingLabel = new JLabel("Training");// Seting the position of Panel
-        TrainingLabel.setBounds(0,0,80,80);  // setBounds(x,y,width,height);
-        panel.add(TrainingLabel); //add the label into the Panel
-
-        JLabel QuestionP = new JLabel("Question Part");
-        QuestionP.setBounds(10,40,50,40);
-        panel.add(QuestionP);
-
-        JTextArea Area = new JTextArea(Keywords);
-        Area.setBounds(10,180,150,80);// setBounds(x,y,width,height);
-        panel.add(Area);
-
-        //Question Create
-
-
     }
 }
 
