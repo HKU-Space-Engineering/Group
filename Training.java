@@ -51,7 +51,7 @@ public class Training {
         Describe1.setBounds(10,80,100,30); // setBounds(x,y,width,height);
         panel.add(Describe1);
         
-        JLabel Describe2 = new JLabel("For example:Human Name,History,Technology,Important Event");
+        JLabel Describe2 = new JLabel("For example:Human Name,History,Technology,Event");
         Describe2.setBounds(10,100,350,30); // setBounds(x,y,width,height);
         panel.add(Describe2);
 
@@ -73,6 +73,8 @@ public class Training {
                     int number = proc.waitFor();
                     if (number == 0){
                         System.out.println(true);
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Can not find the relative information\nPlease change the keywords");
                     }
                 }catch(IOException |InterruptedException e){
                     e.printStackTrace();

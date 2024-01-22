@@ -20,8 +20,12 @@ if (p_wiki.exists()):
 else:
     dStr = "False"
 
+#Cleaning
+dStr = dStr.split(".")
 
+#
 with open("Data.txt","w+",encoding="utf-8") as download:
     #將data寫入Data.text
-    download.write(dStr)
+    for i in dStr:
+        download.write(i + "\n")
     
