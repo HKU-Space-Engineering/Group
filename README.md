@@ -122,3 +122,9 @@ Work:
 
   Work:
   Jian Chun Hin Ben, 20207461,update Learning Buddy.java, Training.java, Training.class, Wiki_2.py and QuestionMaking.java
+
+15.
+  Date:2024/1/28 17:21
+
+  Work:
+  Jian Chun Hin Ben, 20207461,update Training.java, Training.class, QuestionMaking.java and QuestionMaking.class; upload Wiki_3.py, Wiki_3.exe, stoplist.txt and QuestionFile.json 
