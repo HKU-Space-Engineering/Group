@@ -69,13 +69,14 @@ public class Training {
                 String TextArea = Area.getText();
                 Storage.TextFileInput("Rearchfile",TextArea);
                 try{
-                    Process proc = Runtime.getRuntime().exec("Wiki_2.exe"); // Runing a exe program
+                    Process proc = Runtime.getRuntime().exec("Wiki_3.exe"); // Runing a exe program
                     int number = proc.waitFor();
                     if (number == 0){
                         System.out.println(true);
                     }else{
                         JOptionPane.showMessageDialog(null,"Can not find the relative information\nPlease change the keywords");
                     }
+                    QuestionMaking.Question();//Call QuestionMaking
                 }catch(IOException |InterruptedException e){
                     e.printStackTrace();
                 }
@@ -84,10 +85,6 @@ public class Training {
         });   
         Search.setBounds(10,220,80,40);
         panel.add(Search);
-    }
-    
-    //This function for create the question according to the user's input: Called from Button Search
-    public static void QuestionPart(JPanel panel,String Keywords){
     }
 }
 
