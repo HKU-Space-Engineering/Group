@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.lang.Math;
 
+
 /**@author Jian Chun Hin
  * this program aims to create the question in a new panel
 */
@@ -17,6 +18,7 @@ public class QuestionMaking{
     public static void main(String [] args){
         System.out.printf("It is a sub program of Training");
         Question();
+        TextRead();
     }
 
     public static void Question(){
@@ -60,26 +62,22 @@ public class QuestionMaking{
 
     }
 
-    public static String[] TextRead(){
-        //Jian Chun Hin,20207461(2024/1/28):Need to re write 
-        //Question list file is: question.json
+    public static void TextRead(){
+        //Question list file is: QuestionFile.json
+        String[] Qlist;
         String data;
-        int NQ = 0;//Full name is Number of Question
-        String[] Qlist = new String[10]; // A list to contain all the question
-        int Rnum = 0;//Fullname is Random Number 
+        String Question = "";
         try{
-            BufferedReader bufferReader = new BufferedReader(new FileReader("Data.txt"));
+            BufferedReader bufferReader = new BufferedReader(new FileReader("QuestionFile.json"));
             // While aims to acquire all the data from Data.txt
-            while ((( data = bufferReader.readLine()) != null) && (NQ<10)){
-                if (data.length()>= 10){
-                    if ((NQ <= 10)|| ((Rnum = (int)(Math.random()*100))>90)){
-                        Qlist[NQ] = data;
-                        NQ+=1;
-                    }
+            while ((( data = bufferReader.readLine()) != null)){
+                if(data == " "){
+                    break;
                 }
+                Question =  Question + "\n" + data ;
             }
+            System.out.println(Question);
             bufferReader.close();
         }catch(IOException e){}
-        return Qlist;
     }
 }

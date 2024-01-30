@@ -83,8 +83,9 @@ for i in range(len(dStr)):
     
 #將QuestionDict 變成json結構
 text = json.dumps(QuestionDict)
-with open("QuestionFile.json",'w+') as Qwrite:
-    Qwrite.write(text)
+with open("QuestionFile.txt",'w+') as Qwrite:
+    for m in range(1,len(text)):
+        Qwrite.write(text[m])
 
 #原文裝在Data.txt
 with open("Data.txt","w+",encoding="utf-8") as download:
