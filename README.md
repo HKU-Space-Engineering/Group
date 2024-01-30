@@ -128,3 +128,9 @@ Work:
 
   Work:
   Jian Chun Hin Ben, 20207461,update Training.java, Training.class, QuestionMaking.java and QuestionMaking.class; upload Wiki_3.py, Wiki_3.exe, stoplist.txt and QuestionFile.json 
+
+16.
+  Date:2024/1/30 12:26
+
+  Work:
+  Chau Siu Hong Joe, 20186650, update Reminder.java
