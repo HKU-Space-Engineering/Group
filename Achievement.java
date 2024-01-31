@@ -6,6 +6,8 @@ import java.awt.event.*;
 import java.io.*;
 import java.util.*;
 import java.util.List;
+import java.nio.file.Paths;
+import java.nio.file.Files;
 
     
 public class Achievement {
@@ -38,7 +40,7 @@ public class Achievement {
     
         panel.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
+            public void mouseClicked(MouseEvent event) {
                 clickCount++;
                 GetAch();
             }
@@ -46,31 +48,32 @@ public class Achievement {
     
         JButton saveButton = new JButton("Save");
         saveButton.setBounds(200, 75, 80, 40);
-        saveButton.addActionListener(e -> PrintAch());
+        saveButton.addActionListener(event -> PrintAch());
         panel.add(saveButton);
     }
 
-public static List<String> achievements = new ArrayList<>();
-private static long startTime = System.currentTimeMillis();
-private static int clickCount = 0;
-public static void GetAch() {
-    long elapsedTime = System.currentTimeMillis() - startTime;
-    if (elapsedTime >= 3600000 && !achievements.contains("TimeMaster")) {
-        achievements.add("TimeMaster");
-    }
-
-    if (clickCount >= 100 && !achievements.contains("ClickMaster")) {
-        achievements.add("ClickMaster");
-    }
-}
-public static void PrintAch() {
-    File file = new File(System.getProperty("user.home") + "/Desktop/Achievement.txt");
-    try (FileWriter writer = new FileWriter(file)) {
-        for (String achievement : achievements) {
-            writer.write(achievement + "\n");
+    public static List<String> achievements = new ArrayList<>();
+    private static long startTime = System.currentTimeMillis();
+    private static int clickCount = 0;
+    public static void GetAch() {
+        long elapsedTime = System.currentTimeMillis() - startTime;
+        if (elapsedTime >= 3600000 && !achievements.contains("TimeMaster")) {
+            achievements.add("TimeMaster");
         }
-    } catch (IOException e) {
-        e.printStackTrace();
+
+        if (clickCount >= 100 && !achievements.contains("ClickMaster")) {
+            achievements.add("ClickMaster");
+        }
     }
-}
+    public static void PrintAch() {
+        File file = new File(System.getProperty("user.home") + "/Desktop/Achievement.txt");
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+            writer.write("Achievement List:\n");
+            for (int i = 0; i < achievements.size(); i++) {
+                writer.write((i + 1) + ") " + achievements.get(i) + "\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
