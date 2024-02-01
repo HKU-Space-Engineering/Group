@@ -59,7 +59,7 @@ public class Training {
         Describe3.setBounds(10,120,300,30);// setBounds(x,y,width,height);
         panel.add(Describe3);
 
-        JTextArea Area = new JTextArea("Example:Kate_Sheppard ");
+        JTextArea Area = new JTextArea("Kate_Sheppard ");
         Area.setBounds(10,150,165,40);// setBounds(x,y,width,height);
         panel.add(Area);
 
@@ -67,20 +67,19 @@ public class Training {
         Search.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event){
                 String TextArea = Area.getText();
-                Storage.TextFileInput("Rearchfile",TextArea);
+                Storage.TextFileDelete("Rearchfile.txt");
+                Storage.TextFileInput("Rearchfile.txt",TextArea);
+                System.out.println("Text Input done");
                 try{
                     Process proc = Runtime.getRuntime().exec("Wiki_3.exe"); // Runing a exe program
-                    int number = proc.waitFor();
-                    if (number == 0){
-                        System.out.println(true);
-                    }else{
-                        JOptionPane.showMessageDialog(null,"Can not find the relative information\nPlease change the keywords");
-                    }
-                    QuestionMaking.Question();//Call QuestionMaking
-                }catch(IOException |InterruptedException e){
+                }catch(IOException e){
                     e.printStackTrace();
+                    System.out.println("Error in the python part");
                 }
+                System.out.println("python part done");
                 //Call the question panel
+                QuestionMaking.TextRead();;//Call QuestionMaking
+
             }
         });   
         Search.setBounds(10,220,80,40);

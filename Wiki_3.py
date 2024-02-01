@@ -7,8 +7,6 @@
 
 #Program setting
 import wikipediaapi
-import random
-import json
 stoplist = [] 
 Readtime = 0 #閲讀次數
 
@@ -18,7 +16,6 @@ Readtime = 0 #閲讀次數
 with open("stoplist.txt","r",encoding="utf-8") as Readstoplist:
     while(True):
         stoplist.append(Readstoplist.readline())
-        print(stoplist[Readtime])
         if((stoplist[Readtime] == None)or(len(stoplist[Readtime]))==0):
             break
         Readtime +=1
@@ -31,11 +28,26 @@ with open("Rearchfile.txt","r") as rr:
 #Wiki setting
 wiki_wiki = wikipediaapi.Wikipedia("WikiSearcher (1704935142jian@gmail.com)",'en',extract_format = wikipediaapi.ExtractFormat.WIKI)
 #start
+
+Rearch = Rearch.split(" ")
+Rearch = "_".join(Rearch)
+
+print(Rearch)
+if(Rearch =="Kate_Sheppard"):
+    print("true")
+else:
+    print("false")
+
 p_wiki = wiki_wiki.page(Rearch)
 if (p_wiki.exists()):
     dStr = p_wiki.text
 else:
     dStr = "False"
+    print("It is false")
+    with open("QuestionFile.txt",'w+',encoding="utf-8") as error:
+        error.write(dStr)
+        quit()
+
 
 #Cleaning 以下所有内容為 問題庫生成算法 
 
@@ -58,7 +70,6 @@ for i in range(len(dStr)):
     #dStr中的句子,split(" ")
     #將以上詞語放入Contain
     Contain = dStr[i].split(" ")
-    print("Question:"+str(i)+"\n")
     for n in Contain:
         #打開Contain
         #打開stoplist
@@ -78,14 +89,15 @@ for i in range(len(dStr)):
         num = num + 1
         words = ";"
         #編寫Dict
-        QuestionDict[num] = str(Original[i]+"\n"+words.join(Usefull))
+        QuestionDict[num] = str(Original[i]) + words.join(Usefull)
 
     
 #將QuestionDict 變成json結構
-text = json.dumps(QuestionDict)
-with open("QuestionFile.txt",'w+') as Qwrite:
-    for m in range(1,len(text)):
-        Qwrite.write(text[m])
+
+with open("QuestionFile.txt",'w+',encoding="utf-8") as Qwrite:
+    for m in range(1,len(QuestionDict)):
+        Qwrite.write(QuestionDict[m]+"#")
+
 
 #原文裝在Data.txt
 with open("Data.txt","w+",encoding="utf-8") as download:

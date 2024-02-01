@@ -15,4 +15,10 @@ public class Storage {
             outStream.close();
         }catch(IOException ioE){}
     }
+
+    public static void TextFileDelete(String FName){
+        File a = new File(FName);
+        a.delete();
+        System.out.println("Delete File Successfully");
+    }
 }
