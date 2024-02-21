@@ -93,7 +93,7 @@ public class Reminder {
             }
             bufferReader.close(); //close the stream
             // BELOW: Convert ArrayList to String array
-            String[] bookmarks = AList.toArray(new String[retAList.size()]);
+            String[] bookmarks = AList.toArray(new String[AList.size()]);
         } catch (IOException ioE){
 
         }
