@@ -22,18 +22,15 @@ with open("stoplist.txt","r",encoding="utf-8") as Readstoplist:
 
 Rearch = "Kate_Sheppard"#預設Kate_Sheppard 為目標
 
-with open("Rearchfile.txt","r") as rr:
-    Rearch = rr.readline()
+with open("Rearchfile.txt","rb") as rr:
+    Rearch = rr.read().replace(b'\r\n',b'').replace(b'\n',b'')
+    Rearch = Rearch.decode("utf-8")
 
 #Wiki setting
 wiki_wiki = wikipediaapi.Wikipedia("WikiSearcher (1704935142jian@gmail.com)",'en',extract_format = wikipediaapi.ExtractFormat.WIKI)
 #start
 
-Rearch = Rearch.split(" ")
-Rearch = "_".join(Rearch)
-
-print(Rearch)
-if(Rearch =="Kate_Sheppard"):
+if(Rearch == 'Kate_Sheppard'):
     print("true")
 else:
     print("false")
