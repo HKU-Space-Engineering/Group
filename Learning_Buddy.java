@@ -65,7 +65,7 @@ public class Learning_Buddy{
             MenuItem i2 = new MenuItem("Achievement");  
             i2.addActionListener(new ActionListener() {     // Call Training function
                 public void actionPerformed(ActionEvent event){
-                    Achievement.Achievement();//Call Achievement interface
+                    Achievement.achievement();//Call Achievement interface
                 } 
             });
 
