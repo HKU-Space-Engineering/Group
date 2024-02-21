@@ -7,10 +7,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 import java.lang.Math;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
@@ -57,15 +56,14 @@ public class QuestionMaking{
             /*Create a Panel*/
             JPanel panel = new JPanel();//It create a Panel
             frame.add(panel); // Add the panel
-            QuestionPanel(panel); // Disgin the Panel + use the method
+            QuestionPanel(panel,qlist,Answer); // Disgin the Panel + use the method
             frame.setVisible(true);
 
         }catch(Exception e){}
     }
 
 
-    public static void QuestionPanel(JPanel panel){
-        //
+    public static void QuestionPanel(JPanel panel,String[] qlist,String[] Answer){
         panel.setLayout(null);
 
         JLabel title = new JLabel("Question Page");
@@ -75,7 +73,43 @@ public class QuestionMaking{
         JLabel Remind = new JLabel("You need to answer 10 questions in this quiz");
         Remind.setBounds(10,20,300,40);
         panel.add(Remind);
+        
+        JLabel Q1 = new JLabel(qlist[0]);
+        Q1.setBounds(10,70,300,40);
+        panel.add(Q1);
 
+        JTextField Q1A = new JTextField(20);
+        Q1A.setBounds(10,120,150,20);
+        panel.add(Q1A);
+
+
+        JButton Submit = new JButton("Submit");
+        Submit.setBounds(10,300,100,30);
+        Submit.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent event){
+                String[] UAnswer = {Q1A.getText()};
+                int mark = 0;
+                for(int n = 0;n<=10;n++){
+                    if(UAnswer[n].equals(Answer[n])){
+                        mark = mark + 1;
+                    }
+                }
+                JOptionPane.showMessageDialog(null,"Your mark is:"+" "+Integer.toString(mark));
+            }
+        });
+        panel.add(Submit);
+    }
+    
+    public static void QuestionPanel2(JPanel panel){
+        panel.setLayout(null);
+
+        JLabel title = new JLabel("Question Page");
+        title.setBounds(0,0,100,40);
+        panel.add(title);
+
+        JLabel Remind = new JLabel("You need to answer 10 questions in this quiz");
+        Remind.setBounds(10,20,300,40);
+        panel.add(Remind);
     }
 
     public static void TextRead(){
