@@ -73,6 +73,7 @@ public class Learning_Buddy{
             i3.addActionListener(new ActionListener() {     // Call Training function
                 public void actionPerformed(ActionEvent event){
                     //DocManager.interface();   This program didn't finish.
+                    DocManager.docManager();
                 } 
             });
 
