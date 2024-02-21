@@ -61,7 +61,7 @@ public class Achievement {
             achievements.add("TimeMaster");
         }
 
-        if (clickCount >= 100 && !achievements.contains("ClickMaster")) {
+        if (clickCount >= 10 && !achievements.contains("ClickMaster")) {
             achievements.add("ClickMaster");
         }
     }
