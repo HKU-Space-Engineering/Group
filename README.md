@@ -167,6 +167,11 @@ Work:
   Jian Chun Hin Ben, 20207461,update QuestionMaking.java and QuestionMaking.class, Wiki_3.py, Wiki_3.exe, Storage.java, Storage.class, Training.java and Training.class
 
 22.
-Date:2024/2/5 01:00
+  Date:2024/2/5 01:00
 
 Work: Chan Tze Hei Dawn, 20219923,update DocManager.java and DocManager.class
+
+23.
+  Date:2024/2/21 12:17
+
+Work: Jian Chun Hin Ben, 20207461, update Learning_Buddy.jave
