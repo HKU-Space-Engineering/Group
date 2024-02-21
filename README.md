@@ -175,3 +175,8 @@ Work: Chan Tze Hei Dawn, 20219923,update DocManager.java and DocManager.class
   Date:2024/2/21 12:17
 
 Work: Jian Chun Hin Ben, 20207461, update Learning_Buddy.jave
+
+24.
+  Date:2024/2/21 19:53
+
+Work: Jian Chun Hin Ben, 20207461, update Learning_Buddy.jave, Wiki_3.py , Wiki_3.exe and Rearchfile.txt
