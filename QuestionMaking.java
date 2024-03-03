@@ -41,16 +41,41 @@ public class QuestionMaking{
                     break;
                 }
             }
+
             if(QNum<10){
                 System.out.println("Question is not enough,please find anthor source");
                 Question(Questionlist);//if question list is not full, run the code again
             }
 
-            System.out.println("Create the interface");
+            //After the question list and answer list was splited
+            //Their output:
+            //qlist[n]: Born in Liverpool, England, she emigrated to New Zealand with her family in 1868.
+            //Answer[n]: Born;in;Liverpool,;England,;she;emigrated;to;New;Zealand;with;her;family;in;1868
+
+            //The above output can not used on the table because it doesn't choose the word which will be ask in the question.
+            //So we need to do the final dealing
+
+            //br is want to find out which sentence are too long, if too long then let it have "\n"
+            Boolean[] br = new Boolean[10];
+            for(int n =0;n<10;n++){
+                String[] words = Answer[n].split(";");
+                int rnum = (int)(Math.random()*(words.length));
+                Answer[n] = words[rnum]; //Get answer
+                String[] q = qlist[n].split(" ");//cut the qlist to be : ['Born','in','Liverpool',....]
+                for(int m = 0;m<q.length;m++){
+                    if(q[m].equals(Answer[n])){
+                        q[m] = "____";//Replace the answer to be ____
+                    }
+                }
+                qlist[n] = "";
+                for(int t=0;t<q.length;t++){
+                    qlist[n] = qlist[n] + " " + q[t];
+                }
+            }
             //Create a frame of question part
             JFrame frame = new JFrame();
-            frame.setSize(500,700); // setSize(width,height)
-            frame.setLocation(800,300);    // setLocation(x,y)
+            frame.setSize(800,700); // setSize(width,height)
+            frame.setLocation(300,300);    // setLocation(x,y)
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);// Use DIDPOSE_ON_CLOSE
         
             /*Create a Panel*/
@@ -71,23 +96,72 @@ public class QuestionMaking{
         panel.add(title);
 
         JLabel Remind = new JLabel("You need to answer 10 questions in this quiz");
-        Remind.setBounds(10,20,300,40);
+        Remind.setBounds(10,40,300,30);
         panel.add(Remind);
         
-        JLabel Q1 = new JLabel(qlist[0]);
-        Q1.setBounds(10,70,300,40);
+        //Qnum = Question number
+        int Qnum = 0; 
+        //Question 1
+
+        //Question 1 Label
+        JLabel Q1 = new JLabel("<html>1: "+qlist[Qnum]+"</html>");
+        Q1.setBounds(10,60,700,100);
         panel.add(Q1);
 
+        //Question 1 Answer Label
+        JLabel Q1L = new JLabel("Ans:"); 
+        Q1L.setBounds(10,160,150,30);//y+100
+        panel.add(Q1L);
+
+        //Question 1 Answer TextField
         JTextField Q1A = new JTextField(20);
-        Q1A.setBounds(10,120,150,20);
+        Q1A.setBounds(40,160,150,30);
         panel.add(Q1A);
 
+        // Question 2
 
+        //Question 2 Label
+        Qnum = Qnum + 1;//Next question
+        JLabel Q2 = new JLabel("<html>2: "+qlist[Qnum]+"</html>");
+        Q2.setBounds(10,170,700,100);//y +30
+        panel.add(Q2);
+
+        //Question 2 Answer Label
+        JLabel Q2L = new JLabel("Ans:");
+        Q2L.setBounds(10,260,150,30); //y + 150
+        panel.add(Q2L);
+
+        //Question 2 Answer TextField
+        JTextField Q2A = new JTextField(20);
+        Q2A.setBounds(40,260,150,30);
+        panel.add(Q2A);
+
+        // Question 3
+
+        //Question 3 Label
+        Qnum = Qnum + 1;//Next question
+        JLabel Q3 = new JLabel("<html>3: "+qlist[Qnum]+"</html>");
+        Q3.setBounds(10,280,700,100); //y +30
+        panel.add(Q3);
+
+        //Question 3 Answer Label
+        JLabel Q3L = new JLabel("Ans:");
+        Q3L.setBounds(10,380,150,30); //y + 200
+        panel.add(Q3L);
+
+        //Question 3 Answer TextField
+        JTextField Q3A = new JTextField(20);
+        Q3A.setBounds(40,380,150,30);
+        panel.add(Q3A);
+
+
+
+        //Submit Button
         JButton Submit = new JButton("Submit");
-        Submit.setBounds(10,300,100,30);
+        Submit.setBounds(10,500,100,30);
         Submit.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent event){
-                String[] UAnswer = {Q1A.getText()};
+                String[] UAnswer = {Q1A.getText(),Q2A.getText()};
                 int mark = 0;
                 for(int n = 0;n<=10;n++){
                     if(UAnswer[n].equals(Answer[n])){
@@ -99,20 +173,8 @@ public class QuestionMaking{
         });
         panel.add(Submit);
     }
-    
-    public static void QuestionPanel2(JPanel panel){
-        panel.setLayout(null);
 
-        JLabel title = new JLabel("Question Page");
-        title.setBounds(0,0,100,40);
-        panel.add(title);
-
-        JLabel Remind = new JLabel("You need to answer 10 questions in this quiz");
-        Remind.setBounds(10,20,300,40);
-        panel.add(Remind);
-    }
-
-    public static void TextRead(){
+    public static void TextRead(){ //Read
         //Question list file is: QuestionFile.txt
         System.out.println("Text dealing");
         String[] Qlist;
@@ -127,7 +189,7 @@ public class QuestionMaking{
                     break;
                 }
                 if(data.equals("False")){
-                    System.out.println("Stop: There are not question can do");
+                    System.out.println("Stop: It doesn't have any question can do!");
                     JOptionPane.showMessageDialog(null,"You need to use another keywords");
                     Exit = true;
                 }
