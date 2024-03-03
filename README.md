@@ -180,3 +180,8 @@ Work: Jian Chun Hin Ben, 20207461, update Learning_Buddy.jave
   Date:2024/2/21 19:53
 
 Work: Jian Chun Hin Ben, 20207461, update Learning_Buddy.jave, Wiki_3.py , Wiki_3.exe and Rearchfile.txt
+
+25.
+  Date:2024/3/3 12:54
+
+Work: Jian Chun Hin Ben, 20207461, update QuestionMaking.java and QuestionMaking.class
