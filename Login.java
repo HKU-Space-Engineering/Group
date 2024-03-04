@@ -179,8 +179,8 @@ public class Login {
     public static void Interface(){
         try{
             JFrame frame = new JFrame();
-            frame.setSize(500,500);
-            frame.setLocation(400,400);
+            frame.setSize(600,400);
+            frame.setLocation(300,400);
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
             /*Create a Panel*/
@@ -198,29 +198,40 @@ public class Login {
         //A Mehtod to design the panel
         panel.setLayout(null);// A setting of layout
 
+        ImageIcon userimage = new ImageIcon("./src/UserImage.jpg");
+        JLabel imagelabel = new JLabel(userimage);
+        imagelabel.setBounds(20,20,247,221);
+        panel.add(imagelabel);
+
+        JLabel title = new JLabel("Login");
+        Font T = new Font("Times New Roman",Font.BOLD+Font.ITALIC,50);
+        title.setFont(T);
+        title.setBounds(350, 25, 200, 100);
+        panel.add(title);
+
         JLabel userLabel = new JLabel("User Account:");// Seting the position of Panel
-        userLabel.setBounds(10,20,80,40);  // setBounds(x,y,width,height);
+        userLabel.setBounds(300,120,100,40);  // setBounds(x,y,width,height);
         panel.add(userLabel); //add the label into the Panel
 
 
         /*Create A TextBox for People to input */
         JTextField userAccountID = new JTextField(20);
-        userAccountID.setBounds(100,20,165,25);
+        userAccountID.setBounds(400,120,165,25);
         panel.add(userAccountID);
 
         /*Create a Password TextBox */
         JLabel passwordLabel = new JLabel("Password");
-        passwordLabel.setBounds(10, 50, 80, 40);
+        passwordLabel.setBounds(300, 150, 80, 40);
         panel.add(passwordLabel);
 
         /*Create a PassWord TextBox(Password)*/
         JTextField passwordText = new JTextField(20);
-        passwordText.setBounds(100,50,165,25);
+        passwordText.setBounds(400,150,165,25);
         panel.add(passwordText);
 
         /*Create a Login Button */
         JButton loginButton = new JButton("Login");
-        loginButton.setBounds(10,80,80,25);
+        loginButton.setBounds(300,200,80,25);
         loginButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event){
                 //Already solve the GUI event problem
@@ -233,7 +244,7 @@ public class Login {
                     Learning_Buddy.MainInterface();
                 }else{
                     //
-                    JOptionPane.showMessageDialog(null,"The AccountID or Password don't Exist!");//I hope it can return a Joption but it doesn't work!
+                    JOptionPane.showMessageDialog(null,"The AccountID or Password don't Exist!");
                     Learning_Buddy.MainInterface();
                 }
                 
@@ -242,7 +253,7 @@ public class Login {
         panel.add(loginButton,BorderLayout.SOUTH);
 
         JButton CreateAccount = new JButton("Create Account");
-        CreateAccount.setBounds(100,80,150,25);
+        CreateAccount.setBounds(400,200,150,25);
         CreateAccount.addActionListener(new ActionListener() { // Actionlistener
             public void actionPerformed(ActionEvent event){ // Event
                 CreateAccount();
@@ -259,5 +270,6 @@ public class Login {
 
     public static void main(String [] args){
         System.out.printf("This main fuction just for testing the method");
+        Interface();
     }
 }
