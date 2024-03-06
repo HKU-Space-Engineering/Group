@@ -1,6 +1,9 @@
+/* *@author Chau Siu Hong 20186650 */
+/*date created 15/2/2024 */
 import java.awt.event.*;
 import javax.swing.*;
 import java.awt.BorderLayout;
+import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -10,75 +13,80 @@ import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
 public class LearnCalendar extends JFrame {
-    
+    // create a Calendar object
     Calendar cal1 = new GregorianCalendar();
-    Calendar cal2 = new GregorianCalendar(
-            cal1.get(Calendar.YEAR), cal1.get(Calendar.MONTH), 1);
-    
-    private CalendarPanel a = new CalendarPanel(cal2);
-    private JButton previous = new JButton("Previous");
-    private JButton next = new JButton("Next");
-    
-    LearnCalendar() {
+    Calendar cal2 = new GregorianCalendar(cal1.get(Calendar.YEAR), cal1.get(Calendar.MONTH), 1);
+    private CalendarPanel cal = new CalendarPanel(cal2);
+//method
+    public LearnCalendar() {
         JPanel panel = new JPanel();
+        // button of go to previous month
+        JButton previous = new JButton("Previous");
+        previous.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                remove(cal);
+                cal = cal.movetoPreM();
+                add(cal, BorderLayout.CENTER);
+                repaint(); // replace the original button
+                revalidate(); //and update the current month
+            }
+        });
         panel.add(previous);
-        panel.add(next);
-        
-        add(a, BorderLayout.CENTER);
-        add(panel, BorderLayout.SOUTH);
-        
+        // button of go to next month
+        JButton next = new JButton("Next");
         next.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                remove(a);
-                a = a.movetoNextM();
-                add(a, BorderLayout.CENTER);
-                repaint();
-                revalidate();
+                remove(cal);
+                cal = cal.movetoNextM();
+                add(cal, BorderLayout.CENTER);
+                repaint(); // replace the original button
+                revalidate(); //and update the current month
             }
         });
-        
-        previous.addActionListener(new ActionListener() {
-            
+        panel.add(next);
+        JButton create = new JButton("create");
+        create.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                remove(a);
-                a = a.movetoPreM();
-                add(a, BorderLayout.CENTER);
-                repaint();
-                revalidate();
+               
+                Reminder.reminder();
             }
         });
+        panel.add(create);
+        add(cal, BorderLayout.CENTER);
+        add(panel, BorderLayout.NORTH);
+        add(create, BorderLayout.SOUTH);
     }
     
     public static void main(String[] args) {
         JFrame frame = new LearnCalendar();
         frame.pack();
-        frame.setResizable(false);
-        frame.setLocationRelativeTo(null);
+        frame.setSize(500,500);
+        frame.setLocation(300,300);
+        frame.setResizable(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
 }
 
 class CalendarPanel extends JPanel {
-    
+//field
     public Calendar calendar;
     private int currY;
     private int currM;
     private int daysinM;
-    private int starDay;
+    private int daysofWeek;
     private int preM;
-    
+//method
     public CalendarPanel(Calendar calendar) {
         this.calendar = calendar;
-        
         setLayout(new BorderLayout());
-        
-        
+        // get value of year, month, days
         currY = calendar.get(Calendar.YEAR);
         currM = calendar.get(Calendar.MONTH);
         daysinM = getMaximum(currM);
-        starDay = calendar.get(Calendar.DAY_OF_WEEK);
+        daysofWeek = calendar.get(Calendar.DAY_OF_WEEK);
         preM = getPreM(currM);
+
         // header = month and year
         JLabel header = new JLabel((currM + 1) + "/" + currY);
         header.setHorizontalAlignment(JLabel.CENTER);
@@ -122,12 +130,11 @@ class CalendarPanel extends JPanel {
         panel.add(fri);
         panel.add(sat);
         
-        int i;
-        
+        int i = 1;
         int daysinPreM = getMaximum(preM);
-        int preMdisplay = daysinPreM - starDay + 2;
+        int preMdisplay = daysinPreM - daysofWeek + 2;
         // display days in previous month
-        for (i = 1; i < starDay; i++) {
+        for (i = 1; i < daysofWeek; i++) {
             JLabel label = new JLabel(preMdisplay + "");
             label.setBorder(border);
             label.setHorizontalAlignment(JLabel.CENTER);
@@ -154,7 +161,7 @@ class CalendarPanel extends JPanel {
         add(header, BorderLayout.NORTH);
         add(panel, BorderLayout.CENTER);
     }
-    
+    // get the previous month
     private int getPreM(int month) {
         if (month == 0) {
             return 11;
@@ -211,17 +218,16 @@ class CalendarPanel extends JPanel {
     }
     // is 2/29 exist?
     private boolean isLeap() {
-        return (currY % 4 == 0 && currY % 100 != 0) || 
-                currY % 400 == 0;
+        return currY % 4 == 0;
     }
-    
+    // go to previous month
     public CalendarPanel movetoPreM() {
         return new CalendarPanel(new GregorianCalendar(
                 currY, 
                 currM - 1, 
                 1));
     }
-    
+    // go to next month
     public CalendarPanel movetoNextM() {
         return new CalendarPanel(new GregorianCalendar(
                 currY, 
@@ -229,7 +235,5 @@ class CalendarPanel extends JPanel {
                 1));
     }
 
-    public Dimension getPreferredSize() {
-        return new Dimension(700, 400);
-    }
+   
 }
