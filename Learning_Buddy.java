@@ -58,7 +58,8 @@ public class Learning_Buddy{
             MenuItem i1 = new MenuItem("Reminder");
             i1.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent event) {
-                    Reminder.Reminder();//Call Achievement interface 
+                    LearnCalendar a = new LearnCalendar();//Call reminder interface 
+                    a.createCal();
                 }
             });
 
