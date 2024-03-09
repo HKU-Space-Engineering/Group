@@ -56,8 +56,8 @@ public class LearnCalendar extends JFrame {
         add(panel, BorderLayout.NORTH);
         add(create, BorderLayout.SOUTH);
     }
-    
-    public static void main(String[] args) {
+
+    public static void createCal(){
         JFrame frame = new LearnCalendar();
         frame.pack();
         frame.setSize(500,500);
@@ -65,6 +65,10 @@ public class LearnCalendar extends JFrame {
         frame.setResizable(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        createCal();
     }
 }
 
@@ -163,53 +167,53 @@ class CalendarPanel extends JPanel {
     }
     // get the previous month
     private int getPreM(int month) {
-        if (month == 0) {
-            return 11;
+        if (month == 0) { // real month = month + 1
+            return 11; // Jan to Dec
         }
         
-        return month - 1;
+        return month - 1; 
     }
     // maximun day in a month
     private int getMaximum(int month) {
         int maximum = 0;
         switch (month) {
-            case 0: 
+            case 0: // January
                 maximum = 31;
                 break;
-            case 1: 
-                if (isLeap())
+            case 1: // February
+                if (isLeap()) // every 4 year 
                     maximum = 29;
-                else
+                else 
                     maximum = 28;
                 break;
-            case 2:
+            case 2: // March
                 maximum = 31;
                 break;
-            case 3:
+            case 3: // April
                 maximum = 30;
                 break;
-            case 4:
+            case 4: // May
                 maximum = 31;
                 break;
-            case 5:
+            case 5: // June
                 maximum = 30;
                 break;
-            case 6:
+            case 6: // July
                 maximum = 31;
                 break;
-            case 7:
+            case 7: // August
                 maximum = 31;
                 break;
-            case 8:
+            case 8: // September
                 maximum = 30;
                 break;
-            case 9:
+            case 9: // October
                 maximum = 31;
                 break;
-            case 10:
+            case 10: // November
                 maximum = 30;
                 break;
-            case 11:
+            case 11: // December
                 maximum = 31;
                 break;
         }
