@@ -195,3 +195,8 @@ Work: Chau Siu Hong Joe, 20186650, upload LearnCalendar.java
   Date:2024/3/6 20:42
 
 Work: Chau Siu Hong Joe, 20186650, update LearnCalendar.java
+
+28.
+  Date:2024/3/9 13:34
+
+Work: Chau Siu Hong Joe, 20186650, update LearnCalendar.java and Learning_Buddy.java
