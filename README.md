@@ -200,3 +200,8 @@ Work: Chau Siu Hong Joe, 20186650, update LearnCalendar.java
   Date:2024/3/9 13:34
 
 Work: Chau Siu Hong Joe, 20186650, update LearnCalendar.java and Learning_Buddy.java
+
+29.
+  Date:2024/3/17 23
+
+Work: Jian Chun Hin Ben, 20207461, update Training.java and QuestionMaking.java
