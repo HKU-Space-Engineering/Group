@@ -67,8 +67,8 @@ public class Training {
         Search.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event){
                 String TextArea = Area.getText();
-                Storage.TextFileDelete("Rearchfile.txt");
-                Storage.TextFileInput("Rearchfile.txt",TextArea);
+                Storage.TextFileDelete("Rearchfile.txt");   //delete the old file
+                Storage.TextFileInput("Rearchfile.txt",TextArea);   //Storage the data in Rearchfile.txt
                 System.out.println("Text Input done");
                 try{
                     Process proc = Runtime.getRuntime().exec("Wiki_3.exe"); // Runing a exe program

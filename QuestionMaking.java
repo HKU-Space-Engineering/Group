@@ -8,10 +8,16 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.lang.Math;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.*;
 
 
@@ -23,7 +29,7 @@ public class QuestionMaking{
 
     public static void Question(String[] Questionlist){
         try{
-            System.out.println("Here is the Question Making\n");
+            System.out.println("Here is the Question Making\nYou can read the below paragraph to finish the quiz.\n");
             //Setting
             String[] qlist = new String[10]; // Array:Storage the dealed question
             String[] Answer = new String[10]; //Array:Storage the Answer
@@ -34,6 +40,7 @@ public class QuestionMaking{
                     String interim = Questionlist[n];//Create a interim var, The structure: Nicholas Caradoc Hoult (born 7 December 1989) is an English actor.Nicholas;Caradoc;Hoult;(born;7;December;1989);is;an;English;       
                     String[] Newlist = interim.split("\\.");//Cut the data to be two part   #need a "\\" to make sure the problem can understand the "."
                     qlist[QNum] = Newlist[0]; // Acquired the question
+                    System.out.printf("%d: %s\n",QNum,Newlist[0].toString());
                     Answer[QNum] = Newlist[1];//Acquired the answer
                     QNum = QNum + 1;
                 }
@@ -74,8 +81,8 @@ public class QuestionMaking{
             }
             //Create a frame of question part
             JFrame frame = new JFrame();
-            frame.setSize(800,700); // setSize(width,height)
-            frame.setLocation(300,300);    // setLocation(x,y)
+            frame.setSize(700,800); // setSize(width,height)
+            frame.setLocation(300,100);    // setLocation(x,y)
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);// Use DIDPOSE_ON_CLOSE
         
             /*Create a Panel*/
@@ -84,6 +91,7 @@ public class QuestionMaking{
             QuestionPanel(panel,qlist,Answer); // Disgin the Panel + use the method
             frame.setVisible(true);
 
+            
         }catch(Exception e){}
     }
 
@@ -95,7 +103,7 @@ public class QuestionMaking{
         title.setBounds(0,0,100,40);
         panel.add(title);
 
-        JLabel Remind = new JLabel("You need to answer 10 questions in this quiz");
+        JLabel Remind = new JLabel("You need to answer 5 questions in this quiz");
         Remind.setBounds(10,40,300,30);
         panel.add(Remind);
         
@@ -123,12 +131,12 @@ public class QuestionMaking{
         //Question 2 Label
         Qnum = Qnum + 1;//Next question
         JLabel Q2 = new JLabel("<html>2: "+qlist[Qnum]+"</html>");
-        Q2.setBounds(10,170,700,100);//y +30
+        Q2.setBounds(10,170,700,100);//y +20
         panel.add(Q2);
 
         //Question 2 Answer Label
         JLabel Q2L = new JLabel("Ans:");
-        Q2L.setBounds(10,260,150,30); //y + 150
+        Q2L.setBounds(10,260,150,30); //y + 100
         panel.add(Q2L);
 
         //Question 2 Answer TextField
@@ -141,12 +149,12 @@ public class QuestionMaking{
         //Question 3 Label
         Qnum = Qnum + 1;//Next question
         JLabel Q3 = new JLabel("<html>3: "+qlist[Qnum]+"</html>");
-        Q3.setBounds(10,280,700,100); //y +30
+        Q3.setBounds(10,280,700,100); //y +20
         panel.add(Q3);
 
         //Question 3 Answer Label
         JLabel Q3L = new JLabel("Ans:");
-        Q3L.setBounds(10,380,150,30); //y + 200
+        Q3L.setBounds(10,380,150,30); //y + 100
         panel.add(Q3L);
 
         //Question 3 Answer TextField
@@ -154,16 +162,50 @@ public class QuestionMaking{
         Q3A.setBounds(40,380,150,30);
         panel.add(Q3A);
 
+        // Question 4
 
+        //Question 4 Label
+        Qnum = Qnum + 1;//Next question
+        JLabel Q4 = new JLabel("<html>4: "+qlist[Qnum]+"</html>");
+        Q4.setBounds(10,400,700,100); //y +20
+        panel.add(Q4);
+
+        //Question 4 Answer Label
+        JLabel Q4L = new JLabel("Ans:");
+        Q4L.setBounds(10,500,150,30); //y + 100
+        panel.add(Q4L);
+
+        //Question 4 Answer TextField
+        JTextField Q4A = new JTextField(20);
+        Q4A.setBounds(40,500,150,30);
+        panel.add(Q4A);
+
+        // Question 5
+
+        //Question 5 Label
+        Qnum = Qnum + 1;//Next question
+        JLabel Q5 = new JLabel("<html>5: "+qlist[Qnum]+"</html>");
+        Q5.setBounds(10,520,700,100); //y +20
+        panel.add(Q5);
+
+        //Question 5 Answer Label
+        JLabel Q5L = new JLabel("Ans:");
+        Q5L.setBounds(10,600,150,30); //y + 100
+        panel.add(Q5L);
+
+        //Question 5 Answer TextField
+        JTextField Q5A = new JTextField(20);
+        Q5A.setBounds(40,600,150,30);
+        panel.add(Q5A);
 
         //Submit Button
         JButton Submit = new JButton("Submit");
-        Submit.setBounds(10,500,100,30);
+        Submit.setBounds(10,640,100,30);
         Submit.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent event){
-                String[] UAnswer = {Q1A.getText(),Q2A.getText()};
+                String[] UAnswer = {Q1A.getText(),Q2A.getText(),Q3A.getText(),Q4A.getText(),Q5A.getText()};
                 int mark = 0;
-                for(int n = 0;n<=10;n++){
+                for(int n = 0;n<5;n++){
                     if(UAnswer[n].equals(Answer[n])){
                         mark = mark + 1;
                     }
