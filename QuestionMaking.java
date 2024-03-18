@@ -211,6 +211,12 @@ public class QuestionMaking{
                     }
                 }
                 JOptionPane.showMessageDialog(null,"Your mark is:"+" "+Integer.toString(mark));
+                //Achievement part:
+                String word = Storage.TextFileRead("AQCount.txt").trim();//Read the number from the AQCount.txt
+                int number = Integer.parseInt(word.trim());
+                number = number + 5;
+                Storage.TextFileDelete("AQCount.txt"); //Delete the old file
+                Storage.TextFileInput("AQCount.txt",Integer.toString(number)); //Store the number of questions that user have done
             }
         });
         panel.add(Submit);

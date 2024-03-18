@@ -46,7 +46,7 @@ else:
         quit()
 
 
-#Cleaning 以下所有内容為 問題庫生成算法 
+#Cleaning 以下所有内容為 數據清洗算法// There is the Data Cleaning Algorithm 
 
 dStr = dStr.split(". ")#dStr 為原文，在經過處理後，已經以"."切割成一句句的句子  DataType:從String 變成 list
 Contain = [] #容器 用來臨時裝詞語
@@ -89,7 +89,7 @@ for i in range(len(dStr)):
         QuestionDict[num] = str(Original[i]) + words.join(Usefull)
 
     
-#將QuestionDict 變成json結構
+#將QuestionDict 變成txt結構
 
 with open("QuestionFile.txt",'w+',encoding="utf-8") as Qwrite:
     for m in range(1,len(QuestionDict)):
