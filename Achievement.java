@@ -56,14 +56,21 @@ public class Achievement {
     private static long startTime = System.currentTimeMillis();
     private static int clickCount = 0;
     public static void GetAch() {
+        // TimeMaster, unlock after using 1 hour
         long elapsedTime = System.currentTimeMillis() - startTime;
         if (elapsedTime >= 3600000 && !achievements.contains("TimeMaster")) {
             achievements.add("TimeMaster");
         }
-
+        // ClickMaster, unlock after clicked mouse cursor for 1000 times
         if (clickCount >= 10 && !achievements.contains("ClickMaster")) {
             achievements.add("ClickMaster");
         }
+        // 100 Questions!!!, unlock after answering 100 questions in training
+        x = Storage.TextFileRead("AQCount.txt");
+        int data = Integer.parseInt(x); 
+        if (data >= 100 && !achievements.contains("100 Questions!!!")) {
+            achievements.add("100 Questions!!!");
+    }
     }
     public static void PrintAch() {
         File file = new File(System.getProperty("user.home") + "/Desktop/Achievement.txt");
