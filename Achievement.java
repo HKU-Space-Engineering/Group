@@ -42,37 +42,44 @@ public class Achievement {
             @Override
             public void mouseClicked(MouseEvent event) {
                 clickCount++;
-                GetAch();
+                getAch();
             }
         });
     
         JButton saveButton = new JButton("Save");
         saveButton.setBounds(200, 75, 80, 40);
-        saveButton.addActionListener(event -> PrintAch());
+        saveButton.addActionListener(event -> printAch());
         panel.add(saveButton);
     }
 
     public static List<String> achievements = new ArrayList<>();
     private static long startTime = System.currentTimeMillis();
     private static int clickCount = 0;
-    public static void GetAch() {
+    public static void getAch() {
         // TimeMaster, unlock after using 1 hour
-        long elapsedTime = System.currentTimeMillis() - startTime;
-        if (elapsedTime >= 3600000 && !achievements.contains("TimeMaster")) {
-            achievements.add("TimeMaster");
+        long spentTime = System.currentTimeMillis() - startTime;
+        if (spentTime >= 3600000 && !achievements.contains("TimeMaster    Continuously used Learning Buddy for 1 hour.")) {
+            achievements.add("TimeMaster    Continuously used Learning Buddy for 1 hour.");
         }
         // ClickMaster, unlock after clicked mouse cursor for 1000 times
-        if (clickCount >= 10 && !achievements.contains("ClickMaster")) {
-            achievements.add("ClickMaster");
+        if (clickCount >= 1000 && !achievements.contains("ClickMaster   Clicked mouse cursor in Learning Buddy for 1000 times.")) {
+            achievements.add("ClickMaster   Clicked mouse cursor in Learning Buddy for 1000 times.");
         }
-        // 100 Questions!!!, unlock after answering 100 questions in training
-        x = Storage.TextFileRead("AQCount.txt");
-        int data = Integer.parseInt(x); 
-        if (data >= 100 && !achievements.contains("100 Questions!!!")) {
-            achievements.add("100 Questions!!!");
+        // 100 Questions!!!, unlock after answering 100 questions in Training.java
+        String AQCount = Storage.TextFileRead("AQCount.txt");
+        int data = Integer.parseInt(AQCount); 
+        if (data >= 100 && !achievements.contains("100 Questions!!!    Answered over 100 questions in training section.")) {
+            achievements.add("100 Questions!!!    Answered over 100 questions in training section.");
+        }
+        // 10 Reminders!!!, unlock after setting up 10 reminders in Reminder.java
+        String RCount = Storage.TextFileRead("RCount.txt");
+        int data2 = Integer.parseInt(RCount); 
+        if (data2 >= 10 && !achievements.contains("10 Reminders!!!     Created over 10 reminders to remind yourself.")) {
+            achievements.add("10 Reminders!!!     Created over 10 reminders to remind yourself.");
+        }
+
     }
-    }
-    public static void PrintAch() {
+    public static void printAch() {
         File file = new File(System.getProperty("user.home") + "/Desktop/Achievement.txt");
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
             writer.write("Achievement List:\n");
