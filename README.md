@@ -225,3 +225,8 @@ Work: Lam Tsun Ting, 20219894, update the Achievement.java
   Date:2024/3/20 12:04
 
 Work: Lam Tsun Ting, 20219894, update the Achievement.java, upload clickCountFile.txt, spentTimeFile.txt
+
+34.
+  Date:2024/3/20 22:37
+
+Work: Lam Tsun Ting, 20219894, update the Achievement.java
