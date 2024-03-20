@@ -79,14 +79,20 @@ public class Achievement {
     public static void getAch() {
         // TimeMaster, unlock after using 1 hour
         long spentTime = System.currentTimeMillis() - startTime;
-        if (spentTime >= 3600 && !achievements.contains("TimeMaster    Continuously used Learning Buddy for 1 hour.")) {
+        if (spentTime >= 3600000 && spentTime < 18000000 && !achievements.contains("TimeMaster    Continuously used Learning Buddy for 1 hour.")) {
             achievements.add("TimeMaster    Continuously used Learning Buddy for 1 hour.");
         }
-        
+            // Unlock 2nd stage if used over 5 hours
+            else if (spentTime >= 18000000 && !achievements.contains("TimeMaster (II)   Continuously used Learning Buddy for 5 hours.")){
+                achievements.remove("TimeMaster    Continuously used Learning Buddy for 1 hour.");
+                achievements.add("TimeMaster (II)   Continuously used Learning Buddy for 5 hours.");
+            }
         // ClickMaster, unlock after clicked mouse cursor for 1000 times
-        if (clickCount >= 10 && clickCount < 20 && !achievements.contains("ClickMaster   Clicked mouse cursor in Learning Buddy for 1000 times.")) {
-            achievements.add("ClickMaster   Clicked mouse cursor in Learning Buddy for 1000 times.");}
-            else if (clickCount >= 20 && !achievements.contains("ClickMaster (II)   Clicked mouse cursor in Learning Buddy for 2000 times.")){
+        if (clickCount >= 1000 && clickCount < 2000 && !achievements.contains("ClickMaster   Clicked mouse cursor in Learning Buddy for 1000 times.")) {
+            achievements.add("ClickMaster   Clicked mouse cursor in Learning Buddy for 1000 times.");
+        }
+            // Unlock 2nd stage if clicked 2000 times
+            else if (clickCount >= 2000 && !achievements.contains("ClickMaster (II)   Clicked mouse cursor in Learning Buddy for 2000 times.")){
                 achievements.remove("ClickMaster   Clicked mouse cursor in Learning Buddy for 1000 times.");
                 achievements.add("ClickMaster (II)   Clicked mouse cursor in Learning Buddy for 2000 times.");
             }
