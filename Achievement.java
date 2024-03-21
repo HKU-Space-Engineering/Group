@@ -18,12 +18,12 @@ public class Achievement {
     public static void achievement(){
         try{
             // Read the saved clickCount from clickCount.txt
-            String clickCountFile = "clickCount.txt";
+            String clickCountFile = "clickCountFIle.txt";
             String savedclickCount = Storage.TextFileRead(clickCountFile).trim();
             int clickCount = Integer.parseInt(savedclickCount);
 
             // Read the saved spentTime from spentTime.txt
-            String spentTimeFile = "spentTime.txt";
+            String spentTimeFile = "spentTimeFIle.txt";
             String savedspentTime = Storage.TextFileRead(spentTimeFile).trim();
             long spentTime = Long.parseLong(savedspentTime);
 
@@ -32,11 +32,11 @@ public class Achievement {
             spentTime = System.currentTimeMillis() - startTime;
  
             // Store the updated clickCount and spentTime in the files
-            Storage.TextFileDelete(clickCountFile);
-            Storage.TextFileInput(clickCountFile, Integer.toString(clickCount));
+            Storage.TextFileDelete("clickCountFile.txt");
+            Storage.TextFileInput("clickCountFile.txt", Integer.toString(clickCount));
 
-            Storage.TextFileDelete(spentTimeFile);
-            Storage.TextFileInput(spentTimeFile, Long.toString(spentTime));
+            Storage.TextFileDelete("spentTimeFile.txt");
+            Storage.TextFileInput("spentTimeFile.txt", Long.toString(spentTime));
             
             JFrame frame = new JFrame();
             frame.setSize(500,500);
