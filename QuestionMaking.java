@@ -226,22 +226,22 @@ public class QuestionMaking{
         //Question list file is: QuestionFile.txt
         System.out.println("Text dealing");
         String[] Qlist;
-        String data;
+        String AQdata;
         String Question = "";
         Boolean Exit = false;
         try{
             BufferedReader bufferReader = new BufferedReader(new FileReader("QuestionFile.txt",StandardCharsets.UTF_8));
             // While aims to acquire all the data from Data.txt
-            while ((( data = bufferReader.readLine()) != null)){
-                if(data == " "){
+            while ((( AQdata = bufferReader.readLine()) != null)){
+                if(AQdata == " "){
                     break;
                 }
-                if(data.equals("False")){
+                if(AQdata.equals("False")){
                     System.out.println("Stop: It doesn't have any question can do!");
                     JOptionPane.showMessageDialog(null,"You need to use another keywords");
                     Exit = true;
                 }
-                Question =  Question + data;
+                Question =  Question + AQdata;
             }
             if(Exit == false){// checking the output of python file, if it doesn't catch the correct data, then it will stop the program and exit.
                 Qlist = Question.split("#");// if work, dealing with the input data
