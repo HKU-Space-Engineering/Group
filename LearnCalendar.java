@@ -48,7 +48,7 @@ public class LearnCalendar extends JFrame {
         create.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                
-                Reminder.reminder();
+                Reminder.Reminder();
             }
         });
         panel.add(create);
