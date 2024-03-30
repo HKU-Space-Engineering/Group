@@ -210,7 +210,7 @@ public class QuestionMaking{
                         mark = mark + 1;
                     }
                 }
-                JOptionPane.showMessageDialog(null,"Your mark is:"+" "+Integer.toString(mark));
+                JOptionPane.showMessageDialog(null,"Your mark is:"+" "+Integer.toString(mark),"Your Quiz Result",JOptionPane.INFORMATION_MESSAGE,new ImageIcon("./src/P1.jpg"));
                 //Achievement part:
                 String word = Storage.TextFileRead("AQCount.txt").trim();//Read the number from the AQCount.txt
                 int number = Integer.parseInt(word.trim());

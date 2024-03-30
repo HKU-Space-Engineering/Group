@@ -203,6 +203,7 @@ public class Login {
         imagelabel.setBounds(20,20,247,221);
         panel.add(imagelabel);
 
+
         JLabel title = new JLabel("Login");
         Font T = new Font("Times New Roman",Font.BOLD+Font.ITALIC,50);
         title.setFont(T);
@@ -239,13 +240,13 @@ public class Login {
                 String Password = passwordText.getText(); // Get the Password from the password boc.
                 if(CheckAccount(AccountID,Password)){//Check the Existance of account
                     //if yes, login
-                    JOptionPane.showMessageDialog(null,"Login Successfully");
+                    JOptionPane.showMessageDialog(null,"Login Successfully","Login",JOptionPane.INFORMATION_MESSAGE,new ImageIcon("./src/login2.jpg"));
                     //Call function, from the Learning_Buddy.java
                     Learning_Buddy.MainInterface();
                 }else{
                     //
-                    JOptionPane.showMessageDialog(null,"The AccountID or Password don't Exist!");
-                    Learning_Buddy.MainInterface();
+                    
+                    JOptionPane.showMessageDialog(null,"The AccountID or Password don't Exist!","Login Error",JOptionPane.INFORMATION_MESSAGE,new ImageIcon("./src/login2.jpg"));
                 }
                 
             }

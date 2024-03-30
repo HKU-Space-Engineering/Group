@@ -1,4 +1,5 @@
 import javax.accessibility.Accessible;
+import javax.swing.ImageIcon;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -44,18 +45,18 @@ public class Learning_Buddy{
         JFrame frame = new JFrame();
             frame.setLocation(300,400);
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            frame.setSize(550,500);
             /*Create a Panel*/
             JPanel panel = new JPanel();
             frame.add(panel); 
             PanelDesign(panel); // Disgin the Panel 
-            frame.setVisible(true);
 
             // Make a Menu
-            MenuBar mb = new MenuBar();  
-            Menu menu = new Menu("Menu");  
-            Menu submenu = new Menu("Sub Menu");  
+            JMenuBar mb = new JMenuBar();  
+            JMenu menu = new JMenu("Menu");  
+            JMenu submenu = new JMenu("Setting Menu");  
 
-            MenuItem i1 = new MenuItem("Reminder");
+            JMenuItem i1 = new JMenuItem("Reminder");
             i1.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent event) {
                     LearnCalendar a = new LearnCalendar();//Call reminder interface 
@@ -63,14 +64,14 @@ public class Learning_Buddy{
                 }
             });
 
-            MenuItem i2 = new MenuItem("Achievement");  
+            JMenuItem i2 = new JMenuItem("Achievement");  
             i2.addActionListener(new ActionListener() {     // Call Training function
                 public void actionPerformed(ActionEvent event){
                     Achievement.achievement();//Call Achievement interface
                 } 
             });
 
-            MenuItem i3 = new MenuItem("Document Management"); 
+            JMenuItem i3 = new JMenuItem("Document Management",new ImageIcon("./src/icon1.jpg")); 
             i3.addActionListener(new ActionListener() {     // Call Training function
                 public void actionPerformed(ActionEvent event){
                     //DocManager.interface();   This program didn't finish.
@@ -78,7 +79,7 @@ public class Learning_Buddy{
                 } 
             });
 
-            MenuItem i4 = new MenuItem("Training"); 
+            JMenuItem i4 = new JMenuItem("Training"); 
 
             i4.addActionListener(new ActionListener() {     // Call Training function
                 public void actionPerformed(ActionEvent event){
@@ -86,17 +87,20 @@ public class Learning_Buddy{
                 } 
             });
 
-            MenuItem i5 = new MenuItem("Information Setting");  
+            JMenuItem i5 = new JMenuItem("Information Setting");  
 
             i5.addActionListener(new ActionListener() { // Call the NewPanel
                 public void actionPerformed(ActionEvent event){  
                 }
             });
 
-            MenuItem i6 = new MenuItem("Logout"); 
-
-
-            menu.add(submenu); 
+            JMenuItem i6 = new JMenuItem("Logout");
+            i6.addActionListener(new ActionListener() { // Call the NewPanel
+                public void actionPerformed(ActionEvent event){  
+                    Login.Interface(); 
+                }
+            });
+             
             menu.add(i1);  
             menu.add(i2);  
             menu.add(i3); 
@@ -104,8 +108,8 @@ public class Learning_Buddy{
             submenu.add(i5);  
             submenu.add(i6);   
             mb.add(menu);  
-            frame.setMenuBar(mb);  
-            frame.setSize(80,70);  
+            mb.add(submenu);
+            frame.setJMenuBar(mb);   
             frame.setLayout(null);  
             frame.setVisible(true);  
 
@@ -114,12 +118,9 @@ public class Learning_Buddy{
     public static void PanelDesign(JPanel panel){
         panel.setLayout(null);// A setting of layout
 
-        JLabel Label1 = new JLabel("Test1");// Seting the position of Panel
-        Label1.setBounds(10,0,200,25);  // setBounds(x,y,width,height);
-        panel.add(Label1); //add the label into the Panel
-
-        JLabel Label2 = new JLabel("Test2");//The UserName
-        Label2.setBounds(10,40,100,25);
-        panel.add(Label2);
+        ImageIcon userimage = new ImageIcon("./src/UserImage.jpg");
+        JLabel imagelabel = new JLabel(userimage);
+        imagelabel.setBounds(0,0,247,221);
+        panel.add(imagelabel);
     }
 }
