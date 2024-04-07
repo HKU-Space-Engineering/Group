@@ -240,7 +240,7 @@ public class Login {
                 String Password = passwordText.getText(); // Get the Password from the password boc.
                 if(CheckAccount(AccountID,Password)){//Check the Existance of account
                     //if yes, login
-                    JOptionPane.showMessageDialog(null,"Login Successfully","Login",JOptionPane.INFORMATION_MESSAGE,new ImageIcon("./src/login2.jpg"));
+                    JOptionPane.showMessageDialog(null,"Login Successfully","Login",JOptionPane.INFORMATION_MESSAGE,new ImageIcon("./src/login1.jpg"));
                     //Call function, from the Learning_Buddy.java
                     Learning_Buddy.MainInterface();
                 }else{

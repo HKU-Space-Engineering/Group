@@ -45,18 +45,18 @@ public class Learning_Buddy{
         JFrame frame = new JFrame();
             frame.setLocation(300,400);
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            frame.setSize(550,500);
+            frame.setSize(150,100);
             /*Create a Panel*/
             JPanel panel = new JPanel();
             frame.add(panel); 
-            PanelDesign(panel); // Disgin the Panel 
+            panel.setLayout(null);// A setting of layout
 
             // Make a Menu
             JMenuBar mb = new JMenuBar();  
             JMenu menu = new JMenu("Menu");  
             JMenu submenu = new JMenu("Setting Menu");  
 
-            JMenuItem i1 = new JMenuItem("Reminder");
+            JMenuItem i1 = new JMenuItem("Reminder",new ImageIcon("./src/icon2.jpg"));
             i1.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent event) {
                     LearnCalendar a = new LearnCalendar();//Call reminder interface 
@@ -64,7 +64,7 @@ public class Learning_Buddy{
                 }
             });
 
-            JMenuItem i2 = new JMenuItem("Achievement");  
+            JMenuItem i2 = new JMenuItem("Achievement",new ImageIcon("./src/icon5.jpg"));  
             i2.addActionListener(new ActionListener() {     // Call Training function
                 public void actionPerformed(ActionEvent event){
                     Achievement.achievement();//Call Achievement interface
@@ -79,7 +79,7 @@ public class Learning_Buddy{
                 } 
             });
 
-            JMenuItem i4 = new JMenuItem("Training"); 
+            JMenuItem i4 = new JMenuItem("Training",new ImageIcon("./src/icon3.jpg")); 
 
             i4.addActionListener(new ActionListener() {     // Call Training function
                 public void actionPerformed(ActionEvent event){
@@ -113,14 +113,5 @@ public class Learning_Buddy{
             frame.setLayout(null);  
             frame.setVisible(true);  
 
-    }
-
-    public static void PanelDesign(JPanel panel){
-        panel.setLayout(null);// A setting of layout
-
-        ImageIcon userimage = new ImageIcon("./src/UserImage.jpg");
-        JLabel imagelabel = new JLabel(userimage);
-        imagelabel.setBounds(0,0,247,221);
-        panel.add(imagelabel);
     }
 }
