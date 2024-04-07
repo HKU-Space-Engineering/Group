@@ -91,13 +91,14 @@ public class Learning_Buddy{
 
             i5.addActionListener(new ActionListener() { // Call the NewPanel
                 public void actionPerformed(ActionEvent event){  
+                    Information.information();
                 }
             });
 
             JMenuItem i6 = new JMenuItem("Logout");
             i6.addActionListener(new ActionListener() { // Call the NewPanel
                 public void actionPerformed(ActionEvent event){  
-                    Login.Interface(); 
+                    System.exit(0);
                 }
             });
              
