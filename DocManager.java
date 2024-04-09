@@ -12,7 +12,7 @@ import java.util.*;
 import java.io.*;
 import java.nio.file.*;
 import java.nio.*;
-import java.io.IOException;
+import java.util.Properties;
 
 public class DocManager {
     public static void main(String[]args){
@@ -96,7 +96,44 @@ public class DocManager {
         JFrame filechoose = new JFrame();
         JFileChooser chooser = new JFileChooser(System.getProperty("user.dir"));
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
-        "PDF Only (Use File converter for other file formats)", "pdf"); //File format filter
+        "PDF/TXT Only (Files will be replaced if already exists)", "pdf, txt"); //File format filter
+        chooser.setFileFilter(filter);
+        int returnVal = chooser.showOpenDialog(filechoose);
+        if (returnVal == JFileChooser.APPROVE_OPTION){
+            //move file to program directory, add file to file list.
+            File cFile = chooser.getSelectedFile();
+            Path source = cFile.toPath();
+            Path target = Paths.get(System.getProperty("user.dir"),"\\Notes\\ungrouped",
+            cFile.getName());
+            try {
+                Files.copy(source, target, StandardCopyOption.REPLACE_EXISTING);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            //create property file
+            try {
+                String pFilename = System.getProperty("user.dir") + "\\Notes\\ungrouped\\" + 
+                selected.getFileNameWoEx(cFile)+ ".properties";
+                File pFile = new File(pFilename);
+                System.out.print("Property file created in " + pFilename);
+                pFile.createNewFile();
+
+            }   catch(IOException e){
+                e.printStackTrace();
+
+            }
+
+        }
+
+
+
+    }
+    public static void folderGroup() {
+    // Add selected notes into folder, create a new folder if needed.
+        JFrame filechoose = new JFrame();
+        JFileChooser chooser = new JFileChooser(System.getProperty("user.dir"));
+        FileNameExtensionFilter filter = new FileNameExtensionFilter(
+        "Choose the note you wanted to group", "pdf"); //File format filter
         chooser.setFileFilter(filter);
         int returnVal = chooser.showOpenDialog(filechoose);
         if (returnVal == JFileChooser.APPROVE_OPTION){
@@ -111,11 +148,6 @@ public class DocManager {
             }
 
         }
-
-
-    }
-    public static void folderGroup() {
-    // Add selected notes into folder, create a new folder if needed.
     } 
     public static void folderedit() {
     //Changing Folder's Name, Icon and colour.
@@ -123,13 +155,7 @@ public class DocManager {
     public static void fileconvert() {
     //File format converter
         //Select a file to convert
-        JFrame filechoose = new JFrame();
-        JFileChooser chooser = new JFileChooser(System.getProperty("user.dir"));
-        FileNameExtensionFilter filter = new FileNameExtensionFilter(
-        "PDF Only (Use File converter for other file formats)", "docx", ""); //File format filter
-        chooser.setFileFilter(filter);
-        int returnVal = chooser.showOpenDialog(filechoose);
-        if (returnVal == JFileChooser.APPROVE_OPTION){
-        }
+        
+        
     }
 }
