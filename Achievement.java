@@ -17,6 +17,14 @@ public class Achievement {
 
     public static void achievement(){
         try{
+            // Read clickCount from file
+            String clickCountStr = Storage.TextFileRead("clickCountFile.txt");
+            clickCount = Integer.parseInt(clickCountStr);
+
+            // Read spentTime from file
+            String spentTimeStr = Storage.TextFileRead("spentTimeFile.txt");
+            spentTime = Long.parseLong(spentTimeStr);
+            
             JFrame frame = new JFrame();
             frame.setSize(500,500);
             frame.setLocation(400,400);
@@ -42,11 +50,10 @@ public class Achievement {
             @Override
             public void mouseClicked(MouseEvent event) {
                 clickCount++;
-                Storage.TextFileDelete("clickCountFile.txt");
                 Storage.TextFileInput("clickCountFile.txt", Integer.toString(clickCount));
+
                 long newSpentTime = System.currentTimeMillis() - startTime;
                 spentTime = newSpentTime;
-                Storage.TextFileDelete("spentTimeFile.txt");
                 Storage.TextFileInput("spentTimeFile.txt", Long.toString(spentTime));
                 getAch();
             }
