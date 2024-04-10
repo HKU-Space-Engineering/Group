@@ -24,6 +24,9 @@ public class Achievement {
             // Read spentTime from file
             String spentTimeStr = Storage.TextFileRead("spentTimeFile.txt");
             spentTime = Long.parseLong(spentTimeStr);
+
+            // Set the start time to current time
+            startTime = System.currentTimeMillis();
             
             JFrame frame = new JFrame();
             frame.setSize(500,500);
@@ -31,7 +34,7 @@ public class Achievement {
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);// It is necessary
         
             /*Create a Panel*/
-            JPanel panel = new JPanel();//It create a Panel
+            JPanel panel = new JPanel();//It creates a Panel
             frame.add(panel); // Add the panel
             achievementP(panel); // Design the Panel + use the method
             frame.setVisible(true);
@@ -52,9 +55,10 @@ public class Achievement {
                 clickCount++;
                 Storage.TextFileInput("clickCountFile.txt", Integer.toString(clickCount));
 
-                long newSpentTime = System.currentTimeMillis() - startTime;
-                spentTime = newSpentTime;
+                long currentTime = System.currentTimeMillis();
+                spentTime = currentTime - startTime;
                 Storage.TextFileInput("spentTimeFile.txt", Long.toString(spentTime));
+                
                 getAch();
             }
         });
