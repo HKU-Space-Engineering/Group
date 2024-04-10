@@ -14,7 +14,7 @@ import java.util.Properties;
 
 public class selected {
     File path;
-
+    String propPath = "";
     String impDate = "1970-01-01 00:00:00";
     int dcount = -1;
     String lastview = "1970-01-01 00:00:00";
