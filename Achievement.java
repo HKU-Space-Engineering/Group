@@ -17,27 +17,6 @@ public class Achievement {
 
     public static void achievement(){
         try{
-            // Read the saved clickCount from clickCount.txt
-            String clickCountFile = "clickCountFile.txt";
-            String savedclickCount = Storage.TextFileRead(clickCountFile).trim();
-            int clickCount = Integer.parseInt(savedclickCount);
-
-            // Read the saved spentTime from spentTime.txt
-            String spentTimeFile = "spentTimeFile.txt";
-            String savedspentTime = Storage.TextFileRead(spentTimeFile).trim();
-            long spentTime = Long.parseLong(savedspentTime);
-
-            // Update clickCount and spentTime 
-            clickCount++;
-            spentTime = System.currentTimeMillis() - startTime;
- 
-            // Store the updated clickCount and spentTime in the files
-            Storage.TextFileDelete("clickCountFile.txt");
-            Storage.TextFileInput("clickCountFile.txt", Integer.toString(clickCount));
-
-            Storage.TextFileDelete("spentTimeFile.txt");
-            Storage.TextFileInput("spentTimeFile.txt", Long.toString(spentTime));
-            
             JFrame frame = new JFrame();
             frame.setSize(500,500);
             frame.setLocation(400,400);
@@ -63,6 +42,12 @@ public class Achievement {
             @Override
             public void mouseClicked(MouseEvent event) {
                 clickCount++;
+                Storage.TextFileDelete("clickCountFile.txt");
+                Storage.TextFileInput("clickCountFile.txt", Integer.toString(clickCount));
+                long newSpentTime = System.currentTimeMillis() - startTime;
+                spentTime = newSpentTime;
+                Storage.TextFileDelete("spentTimeFile.txt");
+                Storage.TextFileInput("spentTimeFile.txt", Long.toString(spentTime));
                 getAch();
             }
         });
@@ -78,7 +63,6 @@ public class Achievement {
     private static int clickCount = 0;
     public static void getAch() {
         // TimeMaster, unlock after using 1 hour
-        long spentTime = System.currentTimeMillis() - startTime;
         if (spentTime >= 3600000 && spentTime < 18000000 && !achievements.contains("TimeMaster    Continuously used Learning Buddy for 1 hour.")) {
             achievements.add("TimeMaster    Continuously used Learning Buddy for 1 hour.");
         }
