@@ -60,6 +60,7 @@ public class Achievement {
 
     public static List<String> achievements = new ArrayList<>();
     private static long startTime = System.currentTimeMillis();
+    private static long spentTime = 0;
     private static int clickCount = 0;
     public static void getAch() {
         // TimeMaster, unlock after using 1 hour
