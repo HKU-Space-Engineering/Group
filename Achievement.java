@@ -88,11 +88,11 @@ public class Achievement {
                 achievements.add("TimeMaster (II)   Continuously used Learning Buddy for 5 hours.");
             }
         // ClickMaster, unlock after clicked mouse cursor for 1000 times
-        if (clickCount >= 1000 && clickCount < 2000 && !achievements.contains("ClickMaster   Clicked mouse cursor in Learning Buddy for 1000 times.")) {
+        if (clickCount >= 10 && clickCount < 20 && !achievements.contains("ClickMaster   Clicked mouse cursor in Learning Buddy for 1000 times.")) {
             achievements.add("ClickMaster   Clicked mouse cursor in Learning Buddy for 1000 times.");
         }
             // Unlock 2nd stage if clicked 2000 times
-            else if (clickCount >= 2000 && !achievements.contains("ClickMaster (II)   Clicked mouse cursor in Learning Buddy for 2000 times.")){
+            else if (clickCount >= 20 && !achievements.contains("ClickMaster (II)   Clicked mouse cursor in Learning Buddy for 2000 times.")){
                 achievements.remove("ClickMaster   Clicked mouse cursor in Learning Buddy for 1000 times.");
                 achievements.add("ClickMaster (II)   Clicked mouse cursor in Learning Buddy for 2000 times.");
             }
@@ -113,7 +113,7 @@ public class Achievement {
         
         // 50 Documents!!!, unlock after opening 50 documents in DocManager.java
         String DCount = Storage.TextFileRead("DCount.txt");
-        int data = Integer.parseInt(RCount); 
+        int Ddata = Integer.parseInt(RCount); 
         if (data >= 50 && !achievements.contains("50 Documents!!!     Opened over 50 documents in Learning Buddy.")) {
             achievements.add("50 Documents!!!     Opened over 50 documents in Learning Buddy.");
         }
