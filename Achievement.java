@@ -18,12 +18,12 @@ public class Achievement {
     public static void achievement(){
         try{
             // Read the saved clickCount from clickCount.txt
-            String clickCountFile = "clickCountFIle.txt";
+            String clickCountFile = "clickCountFile.txt";
             String savedclickCount = Storage.TextFileRead(clickCountFile).trim();
             int clickCount = Integer.parseInt(savedclickCount);
 
             // Read the saved spentTime from spentTime.txt
-            String spentTimeFile = "spentTimeFIle.txt";
+            String spentTimeFile = "spentTimeFile.txt";
             String savedspentTime = Storage.TextFileRead(spentTimeFile).trim();
             long spentTime = Long.parseLong(savedspentTime);
 
