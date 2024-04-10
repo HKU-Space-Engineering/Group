@@ -1,12 +1,13 @@
 /* *@author Chau Siu Hong 20186650 */
 /*date created 15/2/2024 */
 import java.awt.event.*;
+import java.awt.*;
 import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import javax.swing.border.Border;
@@ -16,7 +17,7 @@ public class LearnCalendar extends JFrame {
     // create a Calendar object
     Calendar cal1 = new GregorianCalendar();
     Calendar cal2 = new GregorianCalendar(cal1.get(Calendar.YEAR), cal1.get(Calendar.MONTH), 1);
-    private CalendarPanel cal = new CalendarPanel(cal2);
+    public CalendarPanel cal = new CalendarPanel(cal2);
 //method
     public LearnCalendar() {
         JPanel panel = new JPanel();
@@ -31,7 +32,7 @@ public class LearnCalendar extends JFrame {
                 revalidate(); //and update the current month
             }
         });
-        panel.add(previous);
+        panel.add(previous, BorderLayout.WEST);
         // button of go to next month
         JButton next = new JButton("Next");
         next.addActionListener(new ActionListener() {
@@ -44,14 +45,15 @@ public class LearnCalendar extends JFrame {
             }
         });
         panel.add(next);
+        // create new plan
         JButton create = new JButton("create");
         create.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               
                 Reminder.Reminder();
             }
         });
-        panel.add(create);
+     
+        
         add(cal, BorderLayout.CENTER);
         add(panel, BorderLayout.NORTH);
         add(create, BorderLayout.SOUTH);
@@ -61,9 +63,9 @@ public class LearnCalendar extends JFrame {
         JFrame frame = new LearnCalendar();
         frame.pack();
         frame.setSize(500,500);
-        frame.setLocation(300,300);
+        frame.setLocation(400,200);
         frame.setResizable(true);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setVisible(true);
     }
 
@@ -71,15 +73,15 @@ public class LearnCalendar extends JFrame {
         createCal();
     }
 }
-
+//create a calendar 
 class CalendarPanel extends JPanel {
 //field
     public Calendar calendar;
-    private int currY;
-    private int currM;
-    private int daysinM;
-    private int daysofWeek;
-    private int preM;
+    public int currY;
+    public int currM;
+    public int daysinM;
+    public int daysofWeek;
+    public int preM;
 //method
     public CalendarPanel(Calendar calendar) {
         this.calendar = calendar;
@@ -93,9 +95,10 @@ class CalendarPanel extends JPanel {
 
         // header = month and year
         JLabel header = new JLabel((currM + 1) + "/" + currY);
+        header.setFont(new Font("Arial", Font.BOLD, 18));
         header.setHorizontalAlignment(JLabel.CENTER);
         
-        JPanel panel = new JPanel(new GridLayout(0, 7, 0, 0));
+        JPanel panel = new JPanel(new GridLayout(0, 7));
         Border border = new LineBorder(Color.BLACK, 1);
         // days in a week
         JLabel sun = new JLabel("Sunday");
@@ -151,6 +154,30 @@ class CalendarPanel extends JPanel {
             JLabel label = new JLabel(j + "");
             label.setBorder(border);
             label.setHorizontalAlignment(JLabel.CENTER);
+            String[] a = Reminder.CheckBookmark();
+            if (Isbookmarkexist(a,currY,currM+1,j)){
+                label.setForeground(Color.red);
+                String[] x = getcurrPlan(a, currY, currM+1, j);
+                String day = getcurrDay(currY, currM+1, j);
+                label.addMouseListener(new MouseAdapter() {
+                    public void mouseClicked(MouseEvent e){
+                        try{
+                            JFrame frame = new JFrame();
+                            frame.setSize(350,300);
+                            frame.setLocation(500,300);
+                            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);// It is necessary
+                        
+                            /*Create a Panel*/
+                            JPanel panel = new JPanel();//It create a Panel
+                            frame.add(panel); // Add the panel
+                            currPlan(x,day,panel);
+                            frame.setVisible(true);
+                        }catch(Exception ioe){}
+                    }
+                });
+            }else{
+                label.setForeground(Color.black);
+            }
             panel.add(label);
         }
         // display days in next month
@@ -165,16 +192,19 @@ class CalendarPanel extends JPanel {
         add(header, BorderLayout.NORTH);
         add(panel, BorderLayout.CENTER);
     }
+   
+
     // get the previous month
-    private int getPreM(int month) {
+    public int getPreM(int month) {
         if (month == 0) { // real month = month + 1
             return 11; // Jan to Dec
         }
         
         return month - 1; 
     }
+
     // maximun day in a month
-    private int getMaximum(int month) {
+    public int getMaximum(int month) {
         int maximum = 0;
         switch (month) {
             case 0: // January
@@ -217,27 +247,72 @@ class CalendarPanel extends JPanel {
                 maximum = 31;
                 break;
         }
-        
         return maximum;
     }
+
     // is 2/29 exist?
-    private boolean isLeap() {
+    public boolean isLeap() {
         return currY % 4 == 0;
     }
+
     // go to previous month
     public CalendarPanel movetoPreM() {
         return new CalendarPanel(new GregorianCalendar(
-                currY, 
-                currM - 1, 
-                1));
+                currY, currM - 1, 1));
     }
+
     // go to next month
     public CalendarPanel movetoNextM() {
         return new CalendarPanel(new GregorianCalendar(
-                currY, 
-                currM + 1, 
-                1));
+                currY, currM + 1, 1));
     }
 
-   
+    // check the bookmark exists in a day or not
+    public Boolean Isbookmarkexist(String[] a,int year,int month,int date) {
+        int j = 0;
+        String time = year + "/" + month + "/" + date;
+        for (int i = 0; i < a.length; i++){
+            String[] b = a[i].split(",");
+            for (int x = 0; x < b.length; x++) {
+                if (b[x].equals(time)){
+                    j = j + 1;
+                }
+            }
+        }
+        if (j == 0){
+            return false;
+        }else{
+            return true;
+        }
+    }
+    public String[] getcurrPlan(String[] a,int year,int month,int date) {
+        ArrayList<String> AList = new ArrayList<String>();
+        String time = year + "/" + month + "/" + date;
+        for (int i = 0; i < a.length; i++){
+            String[] b = a[i].split(",");
+            for (int x = 0; x < b.length; x++) {
+                if (b[x].equals(time)){
+                    AList.add(a[i]);
+                }
+            }
+        }
+        return AList.toArray(new String[AList.size()]);
+    }
+    public String getcurrDay(int year,int month,int date) {
+        String day = Integer.toString(year) + "/" + Integer.toString(month) + "/" + Integer.toString(date);
+        return day;
+    }
+    public void currPlan(String[] a, String day, JPanel panel){
+        panel.setLayout(null);
+        JLabel header = new JLabel("Study plan for "+ day);
+        header.setBounds(20,10,200,25);
+        panel.add(header);
+        int y = 30;
+        for (int i = 0; i < a.length; i++){
+            String[] b = a[i].split(",");
+            JLabel content = new JLabel("Plan "+ (i+1) +": "+b[0]);
+            content.setBounds(20,y*(i+1)+10,200,25);
+            panel.add(content);
+        }
+    }
 }
