@@ -114,7 +114,7 @@ public class Achievement {
         // 50 Documents!!!, unlock after opening 50 documents in DocManager.java
         String DCount = Storage.TextFileRead("DCount.txt");
         int Ddata = Integer.parseInt(RCount); 
-        if (data >= 50 && !achievements.contains("50 Documents!!!     Opened over 50 documents in Learning Buddy.")) {
+        if (Ddata >= 50 && !achievements.contains("50 Documents!!!     Opened over 50 documents in Learning Buddy.")) {
             achievements.add("50 Documents!!!     Opened over 50 documents in Learning Buddy.");
         }
     }
