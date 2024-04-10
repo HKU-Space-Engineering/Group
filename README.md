@@ -231,12 +231,17 @@ Work: Lam Tsun Ting, 20219894, update the Achievement.java, upload clickCountFil
 
 Work: Lam Tsun Ting, 20219894, update the Achievement.java
 
-34.
+35.
   Date:2024/4/10 07:03
 
 Work: Chan Tze Hei Dawn, 20219923, update DocManager.java, upload selected.java
 
-35.
+36.
   Date:2024/4/10 15:37
 
 Work: Chau Siu Hong Joe, 20186650, update LearnCalendar.java and Reminder.java
+
+37.
+  Date:2024/4/10 17:45
+
+Work: Lam Tsun Ting, 20219894, update Achievement.java
