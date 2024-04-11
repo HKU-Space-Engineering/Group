@@ -245,3 +245,8 @@ Work: Chau Siu Hong Joe, 20186650, update LearnCalendar.java and Reminder.java
   Date:2024/4/10 17:45
 
 Work: Lam Tsun Ting, 20219894, update Achievement.java
+
+38.
+  Date:2024/4/11 10:03
+
+Work: Chan Tze Hei Dawn, 20219923, update DocManager.java, update selected.java, removed Notes/
