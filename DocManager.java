@@ -11,6 +11,9 @@ import java.io.*;
 import java.util.*;
 import java.io.*;
 import java.nio.file.*;
+import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.time.format.*;
 import java.nio.*;
 import java.util.Properties;
 
@@ -93,10 +96,17 @@ public class DocManager {
     public static void notesImport() {
     //Import selected files from files explorer to Learning buddy's library.
         //Select file to import
+        try {
+            Files.createDirectories(Paths.get(System.getProperty("user.dir"),
+                        "\\Notes\\ungrouped"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         JFrame filechoose = new JFrame();
         JFileChooser chooser = new JFileChooser(System.getProperty("user.dir"));
+        chooser.setApproveButtonText("Import");
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
-        "PDF/TXT Only (Files will be replaced if already exists)", "pdf, txt"); //File format filter
+        "PDF/TXT Only (Files will be replaced if already exists)", "pdf", "txt"); //File format filter
         chooser.setFileFilter(filter);
         int returnVal = chooser.showOpenDialog(filechoose);
         if (returnVal == JFileChooser.APPROVE_OPTION){
@@ -118,6 +128,13 @@ public class DocManager {
                 System.out.print("Property file created in " + pFilename);
                 pFile.createNewFile();
 
+                selected impFile = new selected(pFile); //adding property fields
+                impFile.setProp(1, null);//set import date
+                String fileType = selected.getFileEx(cFile);//set file type
+                impFile.setProp(2, fileType);
+                impFile.setProp(3, target.toString());
+
+
             }   catch(IOException e){
                 e.printStackTrace();
 
@@ -131,26 +148,87 @@ public class DocManager {
     public static void folderGroup() {
     // Add selected notes into folder, create a new folder if needed.
         JFrame filechoose = new JFrame();
-        JFileChooser chooser = new JFileChooser(System.getProperty("user.dir"));
+        JFileChooser chooser = new JFileChooser(System.getProperty("user.dir") + "\\Notes");
+        chooser.setApproveButtonText("Group");
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
-        "Choose the note you wanted to group", "pdf"); //File format filter
+        "Choose the note you wanted to group", "properties"); //File format filter
         chooser.setFileFilter(filter);
         int returnVal = chooser.showOpenDialog(filechoose);
         if (returnVal == JFileChooser.APPROVE_OPTION){
-            //move file to program directory, add file to file list.
-            Path source = chooser.getSelectedFile().toPath();
-            Path target = Paths.get(System.getProperty("user.dir"),"\\Notes",
-            chooser.getSelectedFile().getName());
+            String gName = JOptionPane.showInputDialog("Input group name");
+            //create folder if group not exist
             try {
-                Files.copy(source, target, StandardCopyOption.REPLACE_EXISTING);
+                String groupPath = Files.createDirectories(Paths.get(System.getProperty("user.dir"),
+                    "\\Notes\\", gName)).toString();
+                Properties prop = new Properties();
+                FileInputStream pStream = new FileInputStream(chooser.getSelectedFile());
+
+                String pGroupname = System.getProperty("user.dir") + "\\Notes\\" +
+                gName + ".properties";
+                File pFile = new File(pGroupname);
+                System.out.print("Property file created in " + pGroupname);
+                pFile.createNewFile();
+                selected impFile = new selected(pFile); //adding property fields
+                impFile.setProp(1, null); //set import date
+                String fileType = "group"; //set file type
+                impFile.setProp(2, fileType);
+            
+                prop.load(pStream);
+
+            //move note
+            File nFile = new File(prop.getProperty("Note_path"));
+            Path nsource = Paths.get(prop.getProperty("Note_path"));
+            Path ntarget = Paths.get(groupPath, nFile.getName());
+            Path psource = chooser.getSelectedFile().toPath();
+            Path ptarget = Paths.get(groupPath, chooser.getSelectedFile().getName());
+            pStream.close();
+            Files.move(nsource, ntarget, StandardCopyOption.REPLACE_EXISTING);
+            Files.move(psource, ptarget, StandardCopyOption.REPLACE_EXISTING);
+            selected newProp = new selected(new File(ptarget.toString()));
+            newProp.setProp(4, gName);
+            
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
         }
     } 
     public static void folderedit() {
-    //Changing Folder's Name, Icon and colour.
+        //Changing Folder's Name, Icon and colour.
+        JFrame filechoose = new JFrame();
+        JFileChooser chooser = new JFileChooser(System.getProperty("user.dir") + "\\Notes");
+        chooser.setApproveButtonText("Edit");
+        FileNameExtensionFilter filter = new FileNameExtensionFilter(
+        "Choose the folder you wanted to edit", "properties"); //File format filter
+        chooser.setFileFilter(filter);
+        int returnVal = chooser.showOpenDialog(filechoose);
+        if (returnVal == JFileChooser.APPROVE_OPTION){
+            selected impFile = new selected(chooser.getSelectedFile());
+            // Display a optionpane
+            String[] options = { "Name", "Icon", "Colour"};
+            int choice = JOptionPane.showOptionDialog(null, "Select options:", 
+            "Edit Folder", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[2]); 
+
+            // Check the user's choice and display a corresponding message 
+            switch (choice) {
+                case 0:
+                    
+                    break;
+            
+                case 2:
+                String[] coptions = { "Red", "Green", "Blue", "White"};
+                String input = (String) JOptionPane.showInputDialog(null, "",
+                "Colours", JOptionPane.QUESTION_MESSAGE, null, coptions, coptions[1]);
+                switch (input){
+                    case "Red":
+                    impFile.setProp(5, input);
+                    
+
+                }
+                break;
+            }
+        } 
     }
     public static void fileconvert() {
     //File format converter
