@@ -134,6 +134,12 @@ public class DocManager {
                 impFile.setProp(2, fileType);
                 impFile.setProp(3, target.toString());
 
+                //D count +1
+                String count = Storage.TextFileRead("DCount.txt"); //Read the number from the DCount.txt
+                int n = Integer.parseInt(count);
+                n++;
+                Storage.TextFileDelete("DCount.txt"); // Delete the old file
+                Storage.TextFileInput("DCount.txt",Integer.toString(n));
 
             }   catch(IOException e){
                 e.printStackTrace();
