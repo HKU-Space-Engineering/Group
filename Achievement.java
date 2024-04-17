@@ -27,6 +27,11 @@ public class Achievement {
 
             // Set the start time to current time
             startTime = System.currentTimeMillis();
+
+            // Calculate the initial spentTime
+            long currentTime = System.currentTimeMillis();
+            spentTime = currentTime - startTime;
+            Storage.TextFileInput("spentTimeFile.txt", Long.toString(spentTime));
             
             JFrame frame = new JFrame();
             frame.setSize(500,500);
@@ -54,10 +59,6 @@ public class Achievement {
             public void mouseClicked(MouseEvent event) {
                 clickCount++;
                 Storage.TextFileInput("clickCountFile.txt", Integer.toString(clickCount));
-
-                long currentTime = System.currentTimeMillis();
-                spentTime = currentTime - startTime;
-                Storage.TextFileInput("spentTimeFile.txt", Long.toString(spentTime));
                 
                 getAch();
             }
