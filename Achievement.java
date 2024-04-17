@@ -56,10 +56,10 @@ public class Achievement {
         AchievementLabel.setBounds(200,25,80,40);
         panel.add(AchievementLabel);
 
-        JTextArea achievementArea = new JTextArea();
+        JLabel AchievementList = new JLabel();
         achievementArea.setBounds(50, 150, 400, 200);
         achievementArea.setEditable(false);
-        panel.add(achievementArea);
+        panel.add(AchievementList);
     
         panel.addMouseListener(new MouseAdapter() {
             @Override
@@ -81,7 +81,7 @@ public class Achievement {
     private static long startTime = System.currentTimeMillis();
     private static long spentTime = 0;
     private static int clickCount = 0;
-    public static void getAch(JTextArea achievementArea) {
+    public static void getAch(JLabel AchievementList) {
         // TimeMaster, unlock after using 1 hour
         if (spentTime >= 3600000 && spentTime < 18000000 && !achievements.contains("TimeMaster    Continuously used Learning Buddy for 1 hour.")) {
             achievements.add("TimeMaster    Continuously used Learning Buddy for 1 hour.");
