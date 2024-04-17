@@ -44,7 +44,9 @@ public class Achievement {
             achievementP(panel); // Design the Panel + use the method
             frame.setVisible(true);
 
-        }catch(Exception e){}
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     public static void achievementP(JPanel panel){
@@ -53,6 +55,11 @@ public class Achievement {
         JLabel AchievementLabel = new JLabel("Achievement");
         AchievementLabel.setBounds(200,25,80,40);
         panel.add(AchievementLabel);
+
+        JTextArea achievementArea = new JTextArea();
+        achievementArea.setBounds(50, 150, 400, 200);
+        achievementArea.setEditable(false);
+        panel.add(achievementArea);
     
         panel.addMouseListener(new MouseAdapter() {
             @Override
@@ -60,7 +67,7 @@ public class Achievement {
                 clickCount++;
                 Storage.TextFileInput("clickCountFile.txt", Integer.toString(clickCount));
                 
-                getAch();
+                getAch(achievementArea);
             }
         });
     
@@ -74,7 +81,7 @@ public class Achievement {
     private static long startTime = System.currentTimeMillis();
     private static long spentTime = 0;
     private static int clickCount = 0;
-    public static void getAch() {
+    public static void getAch(JTextArea achievementArea) {
         // TimeMaster, unlock after using 1 hour
         if (spentTime >= 3600000 && spentTime < 18000000 && !achievements.contains("TimeMaster    Continuously used Learning Buddy for 1 hour.")) {
             achievements.add("TimeMaster    Continuously used Learning Buddy for 1 hour.");
@@ -113,6 +120,11 @@ public class Achievement {
         int Ddata = Integer.parseInt(RCount); 
         if (Ddata >= 50 && !achievements.contains("50 Documents!!!     Opened over 50 documents in Learning Buddy.")) {
             achievements.add("50 Documents!!!     Opened over 50 documents in Learning Buddy.");
+        }
+
+        // Add unlocked achievements to the JTextArea
+        for (String achievement : achievements) {
+            achievementArea.append(achievement + "\n");
         }
     }
     public static void printAch() {
