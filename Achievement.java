@@ -27,11 +27,6 @@ public class Achievement {
 
             // Set the start time to current time
             startTime = System.currentTimeMillis();
-
-            // Calculate the initial spentTime
-            long currentTime = System.currentTimeMillis();
-            spentTime = currentTime - startTime;
-            Storage.TextFileInput("spentTimeFile.txt", Long.toString(spentTime));
             
             JFrame frame = new JFrame();
             frame.setSize(500,500);
@@ -44,9 +39,7 @@ public class Achievement {
             achievementP(panel); // Design the Panel + use the method
             frame.setVisible(true);
 
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+        }catch(Exception e){}
     }
 
     public static void achievementP(JPanel panel){
@@ -55,19 +48,18 @@ public class Achievement {
         JLabel AchievementLabel = new JLabel("Achievement");
         AchievementLabel.setBounds(200,25,80,40);
         panel.add(AchievementLabel);
-
-        JLabel AchievementList = new JLabel();
-        achievementArea.setBounds(50, 150, 400, 200);
-        achievementArea.setEditable(false);
-        panel.add(AchievementList);
     
         panel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent event) {
                 clickCount++;
                 Storage.TextFileInput("clickCountFile.txt", Integer.toString(clickCount));
+
+                long currentTime = System.currentTimeMillis();
+                spentTime = currentTime - startTime;
+                Storage.TextFileInput("spentTimeFile.txt", Long.toString(spentTime));
                 
-                getAch(achievementArea);
+                getAch();
             }
         });
     
@@ -81,7 +73,7 @@ public class Achievement {
     private static long startTime = System.currentTimeMillis();
     private static long spentTime = 0;
     private static int clickCount = 0;
-    public static void getAch(JLabel AchievementList) {
+    public static void getAch() {
         // TimeMaster, unlock after using 1 hour
         if (spentTime >= 3600000 && spentTime < 18000000 && !achievements.contains("TimeMaster    Continuously used Learning Buddy for 1 hour.")) {
             achievements.add("TimeMaster    Continuously used Learning Buddy for 1 hour.");
@@ -120,11 +112,6 @@ public class Achievement {
         int Ddata = Integer.parseInt(RCount); 
         if (Ddata >= 50 && !achievements.contains("50 Documents!!!     Opened over 50 documents in Learning Buddy.")) {
             achievements.add("50 Documents!!!     Opened over 50 documents in Learning Buddy.");
-        }
-
-        // Add unlocked achievements to the JTextArea
-        for (String achievement : achievements) {
-            achievementArea.append(achievement + "\n");
         }
     }
     public static void printAch() {
