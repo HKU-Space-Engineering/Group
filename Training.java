@@ -84,6 +84,16 @@ public class Training {
         });   
         Search.setBounds(10,220,80,40);
         panel.add(Search);
+		
+        panel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent event) {
+                Achievement.clickCount++;
+                Storage.TextFileInput("clickCountFile.txt", Integer.toString(Achievement.clickCount));
+                
+                Achievement.getAch();
+            }
+        });
     }
 }
 
