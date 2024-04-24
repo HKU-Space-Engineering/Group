@@ -191,6 +191,16 @@ class CalendarPanel extends JPanel {
         
         add(header, BorderLayout.NORTH);
         add(panel, BorderLayout.CENTER);
+		
+        panel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent event) {
+                Achievement.clickCount++;
+                Storage.TextFileInput("clickCountFile.txt", Integer.toString(Achievement.clickCount));
+                
+                Achievement.getAch();
+            }
+        });
     }
    
 
