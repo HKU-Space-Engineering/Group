@@ -51,6 +51,16 @@ public class Information {
         JLabel T2 = new JLabel("<html>Groupmates:<br>Chan Tze Hei,Dawn<br>Lam Tsun Ting,Bryan<br>Lee Pak Lok,Leo<br>,Jian Chun Hin,Ben<br>Chau Siu Hong,Joe</html>");
         T2.setBounds(10,150,150,200);
         panel.add(T2);
+		
+        panel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent event) {
+                Achievement.clickCount++;
+                Storage.TextFileInput("clickCountFile.txt", Integer.toString(Achievement.clickCount));
+                
+                Achievement.getAch();
+            }
+        });
     }
 }
 
