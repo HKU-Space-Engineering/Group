@@ -62,6 +62,16 @@ public class InterfaceS {
         textArea.append("Hellow");
         textArea.setBounds(10,120,200,50);
         panel.add(textArea);
+		
+        panel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent event) {
+                Achievement.clickCount++;
+                Storage.TextFileInput("clickCountFile.txt", Integer.toString(Achievement.clickCount));
+                
+                Achievement.getAch();
+            }
+        });
     }
     
 }
