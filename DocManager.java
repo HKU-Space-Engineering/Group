@@ -4,6 +4,7 @@
 //Module
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.plaf.FileChooserUI;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -16,6 +17,7 @@ import java.time.OffsetDateTime;
 import java.time.format.*;
 import java.nio.*;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 public class DocManager {
     public static void main(String[]args){
@@ -238,7 +240,17 @@ public class DocManager {
     }
     public static void fileconvert() {
     //File format converter
-        //Select a file to convert
+        //tell user to move photos to source folder
+        JOptionPane.showMessageDialog(null,"You need to put all the jpg file into the Photo floder");
+
+        //convert 
+        try{
+            System.out.println("convert");
+            Process proc = Runtime.getRuntime().exec("img2pdf3.exe"); // Runing a exe program
+        }catch(IOException e){
+            e.printStackTrace();
+            System.out.println("Error in the python part");
+        }
         
         
     }
