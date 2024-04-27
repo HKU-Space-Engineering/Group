@@ -69,14 +69,14 @@ public class Achievement {
     public static int clickCount = 0;
     public static void getAch() {
 
-        // ClickMaster, unlock after clicked mouse cursor for 1000 times
-        if (clickCount >= 100 && clickCount < 200 &&!achievements.contains("ClickMaster   Clicked mouse cursor in Learning Buddy for 1000 times.")) {
-            achievements.add("ClickMaster   Clicked mouse cursor in Learning Buddy for 1000 times.");
+        // ClickMaster, unlock after clicked mouse cursor for 100 times
+        if (clickCount >= 100 && clickCount < 200 &&!achievements.contains("ClickMaster   Clicked mouse cursor in Learning Buddy for 100 times.")) {
+            achievements.add("ClickMaster   Clicked mouse cursor in Learning Buddy for 100 times.");
         }
-            // Unlock 2nd stage if clicked 2000 times
-            else if (clickCount >= 200 &&!achievements.contains("ClickMaster (II)   Clicked mouse cursor in Learning Buddy for 2000 times.")){
-                achievements.remove("ClickMaster   Clicked mouse cursor in Learning Buddy for 1000 times.");
-                achievements.add("ClickMaster (II)   Clicked mouse cursor in Learning Buddy for 2000 times.");
+            // Unlock 2nd stage if clicked 200 times
+            else if (clickCount >= 200 && clickCount < 500 &&!achievements.contains("ClickMaster (II)   Clicked mouse cursor in Learning Buddy for 200 times.")){
+                achievements.remove("ClickMaster   Clicked mouse cursor in Learning Buddy for 100 times.");
+                achievements.add("ClickMaster (II)   Clicked mouse cursor in Learning Buddy for 200 times.");
             }
         
         // 100 Questions!!!, unlock after answering 100 questions in Training.java
@@ -86,9 +86,19 @@ public class Achievement {
             achievements.add("10 Questions!!!    Answered over 10 questions in training section.");
         }
 			//2nd stage >=50
-			else if (AQdata >= 50 &&!achievements.contains("50 Questions!!!    Answered over 50 questions in training section.")){
+			else if (AQdata >= 50 && AQdata < 100 &&!achievements.contains("50 Questions!!!    Answered over 50 questions in training section.")){
 				achievements.remove("10 Questions!!!    Answered over 10 questions in training section.");
 				achievements.add("50 Questions!!!    Answered over 50 questions in training section.");
+			}
+			//3rd stage >=100
+			else if (AQdata >= 100 && AQdata < 300 &&!achievements.contains("100 Questions!!!    Answered over 100 questions in training section.")){
+				achievements.remove("50 Questions!!!    Answered over 50 questions in training section.");
+				achievements.add("100 Questions!!!    Answered over 100 questions in training section.");
+			}
+			//4td stage >=300
+			else if (AQdata >= 300 &&!achievements.contains("300 Questions!!!    Answered over 300 questions in training section.")){
+				achievements.remove("100 Questions!!!    Answered over 100 questions in training section.");
+				achievements.add("300 Questions!!!    Answered over 300 questions in training section.");
 			}
         
         // 10 Reminders!!!, unlock after setting up 10 reminders in Reminder.java
@@ -98,9 +108,19 @@ public class Achievement {
             achievements.add("1 Reminder!!!     Created 1 reminder to remind yourself.");
         }
 			//2nd stage >=10
-			else if (Rdata >= 10 &&!achievements.contains("10 Reminders!!!     Created more than 10 reminders to remind yourself.")){
+			else if (Rdata >= 10 && Rdata < 20&&!achievements.contains("10 Reminders!!!     Created more than 10 reminders to remind yourself.")){
 				achievements.remove("1 Reminder!!!     Created 1 reminder to remind yourself.");
 				achievements.add("10 Reminders!!!    Created more than 10 reminders to remind yourself.");
+			}
+			//3rd stage >=20
+			else if (Rdata >= 20 && Rdata < 50&&!achievements.contains("20 Reminders!!!     Created more than 10 reminders to remind yourself.")){
+				achievements.remove("10 Reminders!!!    Created more than 10 reminders to remind yourself.");
+				achievements.add("20 Reminders!!!     Created more than 10 reminders to remind yourself.");
+			}
+			//4th stage >=50
+			else if (Rdata >= 50 &&!achievements.contains("50 Reminders!!!     Created more than 50 reminders to remind yourself.")){
+				achievements.remove("20 Reminders!!!     Created more than 10 reminders to remind yourself.");
+				achievements.add("50 Reminders!!!     Created more than 50 reminders to remind yourself.");
 			}
         
         // 50 Documents!!!, unlock after opening 50 documents in DocManager.java
@@ -110,9 +130,19 @@ public class Achievement {
             achievements.add("10 Documents!!!     Opened more than 10 documents in Learning Buddy.");
         }
 			//2nd stage >=50
-			else if (Ddata >= 50 &&!achievements.contains("50 Documents!!!     Opened more than 50 documents in Learning Buddy.")){
+			else if (Ddata >= 50 && Ddata < 100 &&!achievements.contains("50 Documents!!!     Opened more than 50 documents in Learning Buddy.")){
 				achievements.remove("10 Documents!!!     Opened more than 10 documents in Learning Buddy.");
 				achievements.add("50 Documents!!!     Opened more than 50 documents in Learning Buddy.");
+			}
+			//3rd stage >=100
+			else if (Ddata >= 100 && Ddata < 300 &&!achievements.contains("100 Documents!!!     Opened more than 100 documents in Learning Buddy.")){
+				achievements.remove("50 Documents!!!     Opened more than 50 documents in Learning Buddy.");
+				achievements.add("100 Documents!!!     Opened more than 100 documents in Learning Buddy.");
+			}
+			//4th stage >=300
+			else if (Ddata >= 300 &&!achievements.contains("300 Documents!!!     Opened more than 300 documents in Learning Buddy.")){
+				achievements.remove("100 Documents!!!     Opened more than 100 documents in Learning Buddy.");
+				achievements.add("300 Documents!!!     Opened more than 300 documents in Learning Buddy.");
 			}
     }
     public static void printAch(JTextArea textArea) {
